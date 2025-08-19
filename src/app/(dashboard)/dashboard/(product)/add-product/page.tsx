@@ -32,6 +32,7 @@ interface IFormInput {
   productName: string;
   slug: string;
   productImage: string;
+  description: string;
   quantity: number;
   prvPrice?: number;
   price: number;
@@ -67,6 +68,13 @@ const fieldConfig: Fields[] = [
     valueKey: "slug",
     placeholder: "Enter the slug",
     type: "text",
+    formType: "string",
+  },
+  {
+    label: "Description",
+    valueKey: "description",
+    placeholder: "Enter the description",
+    type: "richtext",
     formType: "string",
   },
   {
@@ -197,6 +205,7 @@ const AddPage = () => {
       const payload = {
         productName: metaData.productName,
         slug: metaData.slug,
+        description: metaData.description,
         quantity: Number(metaData.quantity),
         specialty: metaData.specialty,
         prvPrice: Number(metaData.prvPrice),

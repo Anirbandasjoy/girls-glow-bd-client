@@ -19,12 +19,21 @@ import {
 import { useRouter } from "next/navigation";
 import { GlobalAICommandInput } from "@/components/layout/dashboard/shared/inputs/GlobalAICommandInput/GlobalAICommandInput";
 import Heading from "@/components/layout/dashboard/shared/Heading";
-
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useHandleFindCategoryQuery } from "@/redux/features/categories/categoriesApi";
 // Types
 interface IFormInput {
   productName: string;
   slug: string;
   productImage: string;
+  description: string;
   quantity: number;
   prvPrice?: number;
   price: number;
@@ -60,6 +69,13 @@ const fieldConfig: Fields[] = [
     valueKey: "slug",
     placeholder: "Enter the slug",
     type: "text",
+    formType: "string",
+  },
+  {
+    label: "Description",
+    valueKey: "description",
+    placeholder: "Enter the description",
+    type: "richtext",
     formType: "string",
   },
   {
@@ -162,6 +178,12 @@ const UpdatePage: React.FC<{ params: Promise<Params> }> = ({ params }) => {
   const [handleUpdateProduct, { isLoading }] = useHandleUpdateProductMutation();
   const [isImageUploading, setIsImageUploading] = useState<boolean>(false);
   const router = useRouter();
+  const { data: categoryData } = useHandleFindCategoryQuery({
+    page: 1,
+    limit: 100,
+    search: "",
+  });
+  const categories: any[] = categoryData?.payload || [];
 
   const [historyModal, setHistoryModal] = useState<{
     open: boolean;
@@ -218,6 +240,7 @@ const UpdatePage: React.FC<{ params: Promise<Params> }> = ({ params }) => {
         id,
         productName: metaData?.productName,
         slug: metaData?.slug,
+        description: metaData?.description,
         quantity: Number(metaData?.quantity),
         prvPrice: Number(metaData?.prvPrice),
         price: Number(metaData?.price),
@@ -234,6 +257,7 @@ const UpdatePage: React.FC<{ params: Promise<Params> }> = ({ params }) => {
           tag: metaData?.seoTag,
           description: metaData?.seoDescription,
         },
+        
       };
       await handleUpdateProduct(payload).unwrap();
       toast.success("Data updated successfully!");
@@ -256,6 +280,7 @@ const UpdatePage: React.FC<{ params: Promise<Params> }> = ({ params }) => {
       const newMetaData = {
         productName: payload.productName || "",
         slug: payload.slug || "",
+        description: payload.description || "",
         quantity: payload.quantity || "",
         prvPrice: payload.prvPrice || "",
         price: payload.price || "",
@@ -273,6 +298,7 @@ const UpdatePage: React.FC<{ params: Promise<Params> }> = ({ params }) => {
       const newMetaDataHistory = {
         productName: payload.productName || "",
         slug: payload.slug || "",
+        description: payload.description || "",
         quantity: payload.quantity || "",
         prvPrice: payload.prvPrice || "",
         price: payload.price || "",
@@ -290,6 +316,7 @@ const UpdatePage: React.FC<{ params: Promise<Params> }> = ({ params }) => {
       methods.reset({
         productName: payload.productName || "",
         slug: payload.slug || "",
+        description: payload.description || "",
         quantity: payload.quantity || "",
         prvPrice: payload.prvPrice || "",
         price: payload.price || "",
@@ -302,7 +329,7 @@ const UpdatePage: React.FC<{ params: Promise<Params> }> = ({ params }) => {
       });
 
       setId(payload._id);
-      setCategory(payload.setCategory);
+      setCategory(payload.category);
     }
   }, [data, methods]);
 
@@ -325,6 +352,25 @@ const UpdatePage: React.FC<{ params: Promise<Params> }> = ({ params }) => {
             setHistoryModal={setHistoryModal}
             setMetaDataHistory={setMetaDataHistory}
           />
+
+          {/* Category select */}
+          <div>
+            <FormLabel className="mb-2">Category</FormLabel>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select a category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {categories.map((c) => (
+                    <SelectItem key={c._id} value={c._id}>
+                      {c.categoryName}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
 
           <FormItem>
             <FormLabel>Image</FormLabel>

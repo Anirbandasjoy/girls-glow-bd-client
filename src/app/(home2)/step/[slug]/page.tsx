@@ -1,4 +1,6 @@
+import Navbar from "@/components/layout/Home/shared/Navbar";
 import ShopDetails from "./ShopDetails";
+import Footer from "@/components/layout/Home/shared/Footer";
 
 export async function generateMetadata({ params }: any) {
   const { slug } = params;
@@ -6,8 +8,6 @@ export async function generateMetadata({ params }: any) {
     const response = await fetch(
       `https://server.ponnobari.store/api/v1/product/${slug}`
     );
-
-
 
     if (!response.ok) {
       throw new Error(
@@ -109,7 +109,9 @@ export default function Page({ params }: any) {
 
   return (
     <main className=" mx-auto bg-[#FAF9F6]">
+      <Navbar />
       <ShopDetails slug={slug} />
+      <Footer />
     </main>
   );
 }
