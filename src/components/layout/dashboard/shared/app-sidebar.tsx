@@ -7,7 +7,7 @@ import {
   ListFilterPlus,
   LucideLayoutDashboard,
   Plus,
-  ScrollText,
+  // ScrollText,
   ShoppingBasket,
   TestTubeIcon,
   UserCog,
@@ -123,6 +123,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       },
 
       {
+        title: "Team",
+        url: "#",
+        icon: TestTubeIcon,
+        isActive: false,
+        items: [
+          {
+            title: "Add Team",
+            url: "/dashboard/add-team",
+            icon: Plus,
+          },
+          {
+            title: "Manage Team",
+            url: "/dashboard/manage-team",
+            icon: ListFilterPlus,
+          },
+        ],
+      },
+      {
         title: "Reviews",
         url: "#",
         icon: TestTubeIcon,
@@ -158,24 +176,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           },
         ],
       },
-      {
-        title: "Level",
-        url: "#",
-        icon: ScrollText,
-        isActive: false,
-        items: [
-          {
-            title: "Add Level",
-            url: "/dashboard/add-level",
-            icon: Plus,
-          },
-          {
-            title: "Manage level",
-            url: "/dashboard/manage-level",
-            icon: ListFilterPlus,
-          },
-        ],
-      },
+      // {
+      //   title: "Level",
+      //   url: "#",
+      //   icon: ScrollText,
+      //   isActive: false,
+      //   items: [
+      //     {
+      //       title: "Add Level",
+      //       url: "/dashboard/add-level",
+      //       icon: Plus,
+      //     },
+      //     {
+      //       title: "Manage level",
+      //       url: "/dashboard/manage-level",
+      //       icon: ListFilterPlus,
+      //     },
+      //   ],
+      // },
     ],
   };
 

@@ -155,7 +155,7 @@ export default function CartTable({
   );
 
   return (
-    <div className="w-full bg-white p-2 h-fit">
+    <div className="w-full bg-[#F5F5F5] p-2 h-fit">
       {/* Desktop View */}
       <div className="hidden sm:block">
         <Table>

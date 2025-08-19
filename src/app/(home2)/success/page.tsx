@@ -109,7 +109,7 @@ export default function ShopCart() {
         <div className="text-center mb-8">
           <div className="flex justify-center items-center gap-3">
             <svg
-              className="h-10 w-10 text-green-500"
+              className="h-10 w-10 text-yellow-500"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -138,7 +138,7 @@ export default function ShopCart() {
             <div>
               <h2 className="font-semibold text-lg text-gray-800">
                 Order ID:{" "}
-                <span className="font-mono text-lime-600">
+                <span className="font-mono text-yellow-600">
                   {response?.payload?.trackingId}
                 </span>
               </h2>
@@ -275,7 +275,7 @@ export default function ShopCart() {
           <div className="flex justify-end pt-6 border-t border-gray-200">
             <button
               onClick={handleDownloadInvoice}
-              className="flex items-center justify-center gap-2 bg-green-500 text-white py-2.5 px-6 rounded-lg hover:bg-green-700 font-semibold cursor-pointer transition-colors duration-300"
+              className="flex items-center justify-center gap-2 bg-yellow-500 text-white py-2.5 px-6 rounded-lg hover:bg-yellow-700 font-semibold cursor-pointer transition-colors duration-300"
             >
               <FiDownload />
               {loading ? "Generating..." : " Download Invoice"}

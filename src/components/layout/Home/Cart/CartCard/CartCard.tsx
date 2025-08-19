@@ -24,10 +24,7 @@ interface FormData {
 //   return str.replace(/<\/?[^>]+(>|$)/g, "");
 // }
 
-export default function CartCard({
-  cartProducts,
-  setCartProducts,
-}: any) {
+export default function CartCard({ cartProducts, setCartProducts }: any) {
   const {
     register,
     handleSubmit,
@@ -44,7 +41,8 @@ export default function CartCard({
   const paymentMethod = watch("payment");
   const shippingSelected = watch("shipping", "dhakaCity");
 
-  const [handleAddOrder, { isLoading: placeOrderLoading }] = useHandleAddOrderMutation();
+  const [handleAddOrder, { isLoading: placeOrderLoading }] =
+    useHandleAddOrderMutation();
   const router = useRouter();
 
   // Calculate shipping cost based on selected option
@@ -140,18 +138,18 @@ export default function CartCard({
   };
 
   return (
-    <div className="w-full lg:w-96 p-4 bg-white rounded shadow h-fit">
-      <h2 className="text-lg font-bold text-[#FFA800] mb-4 ">Billing Details</h2>
+    <div className="w-full lg:w-96 p-4 bg-[#F5F5F5] rounded shadow h-fit">
+      <h2 className="text-lg font-bold mb-4 ">Billing Details</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Name */}
         <div>
-          <label className="text-forest-green font-semibold text-sm font-tiro_bangla">
+          <label className=" font-semibold text-sm font-tiro_bangla">
             আপনার নাম *
           </label>
           <input
             {...register("name", { required: "নাম প্রয়োজন" })}
             placeholder="আপনার নাম লিখুন"
-            className="w-full border rounded p-2 mt-1 font-tiro_bangla"
+            className="w-full border rounded p-2 mt-1 font-tiro_bangla bg-white"
           />
           {errors.name && (
             <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -160,7 +158,7 @@ export default function CartCard({
 
         {/* Phone */}
         <div>
-          <label className="text-forest-green font-semibold text-sm font-tiro_bangla">
+          <label className=" font-semibold text-sm font-tiro_bangla">
             মোবাইল নাম্বার *
           </label>
           <input
@@ -174,7 +172,7 @@ export default function CartCard({
                   "দয়া করে একটি বাংলাদেশী মোবাইল (01XXXXXXXXX) নম্বর দিন",
               },
             })}
-            className="w-full border rounded p-2 mt-1 font-tiro_bangla"
+            className="w-full border rounded p-2 mt-1 font-tiro_bangla bg-white"
           />
           {errors.phone && (
             <p className="text-red-500 text-sm ">{errors.phone.message}</p>
@@ -183,13 +181,13 @@ export default function CartCard({
 
         {/* Address */}
         <div>
-          <label className="text-forest-green font-semibold text-sm font-tiro_bangla">
+          <label className=" font-semibold text-sm font-tiro_bangla">
             আপনার ঠিকানা ( এলাকা, থানা, জেলা ) *
           </label>
           <textarea
             {...register("address", { required: "ঠিকানা প্রয়োজন" })}
             placeholder="এলাকা, থানা, জেলা লিখুন"
-            className="w-full border rounded p-2 mt-1 font-tiro_bangla"
+            className="w-full border rounded p-2 mt-1 font-tiro_bangla bg-white"
           />
           {errors.address && (
             <p className="text-red-500 text-sm">{errors.address.message}</p>
@@ -200,9 +198,7 @@ export default function CartCard({
         <div className="pt-2 border-t">
           <div className="flex justify-between">
             <span className="font-semibold">Subtotal</span>
-            <span className="font-bold text-green-600">
-              Tk {cost.toLocaleString()}
-            </span>
+            <span className="font-bold">Tk {cost.toLocaleString()}</span>
           </div>
 
           <div className="space-y-3 my-5">
@@ -260,9 +256,7 @@ export default function CartCard({
           <hr className="my-3" />
           <div className="flex justify-between mt-1">
             <span className="font-semibold">Total</span>
-            <span className="font-bold text-green-600">
-              Tk {cost.toLocaleString()}
-            </span>
+            <span className="font-bold ">Tk {cost.toLocaleString()}</span>
           </div>
         </div>
 
@@ -300,11 +294,11 @@ export default function CartCard({
                   type="text"
                   {...register("cashPaymentMessage")}
                   placeholder="Any special instructions?"
-                  className="w-full p-2 border rounded mt-1"
+                  className="w-full p-2 border rounded mt-1 bg-white"
                 />
               </label>
 
-              <div className="p-5 bg-mint-background text-midnight-navy mt-5 font-tiro_bangla">
+              <div className="p-5 bg-[#F5F5F5] text-midnight-navy mt-5 font-tiro_bangla">
                 <h1 className="text-xl font-medium mb-3">ক্যাশ অন ডেলিভারি</h1>
                 <p className="bg-white p-5">
                   আমরা দিচ্ছি হোম ডেলিভারি, পন্য হাতে পেয়ে দেখে রিসিভ করবেন, আশা
@@ -329,7 +323,7 @@ export default function CartCard({
                     },
                   })}
                   placeholder="01XXXXXXXXX"
-                  className="w-full p-2 border rounded mt-1 font-tiro_bangla"
+                  className="w-full p-2 border rounded mt-1 font-tiro_bangla bg-white"
                 />
                 {errors.bkashPhone && (
                   <p className="text-red-500 text-sm mt-1">
@@ -346,7 +340,7 @@ export default function CartCard({
                     required: "Transaction ID is required",
                   })}
                   placeholder="Enter transaction ID"
-                  className="w-full p-2 border rounded mt-1"
+                  className="w-full p-2 border rounded mt-1 bg-white"
                 />
                 {errors.bkashTransactionId && (
                   <p className="text-red-500 text-sm mt-1">
@@ -362,8 +356,11 @@ export default function CartCard({
         <button
           type="submit"
           disabled={placeOrderLoading}
-          className={`w-full py-2 rounded cursor-pointer ${placeOrderLoading ? "bg-gray-400 cursor-not-allowed disabled" : "bg-forest-green hover:bg-green-800 text-white"
-            }`}
+          className={`w-full py-2 rounded cursor-pointer ${
+            placeOrderLoading
+              ? "bg-gray-400 cursor-not-allowed disabled"
+              : "bg-yellow-400 hover:bg-yellow-500"
+          }`}
         >
           {placeOrderLoading ? "Place Order.." : "Place Order"}
         </button>

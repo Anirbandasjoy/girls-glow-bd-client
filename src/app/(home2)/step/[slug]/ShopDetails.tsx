@@ -781,7 +781,7 @@ const ShopDetails = ({ slug }: any) => {
                   </div>
                 </form>
               </div>
-              <div className="my-20 max-w-screen-xl mx-auto">
+              <div className="pt-36 sm:py-20 max-w-screen-xl mx-auto">
                 <div className="text-center mb-16">
                   <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl text-[#1A1A1A] font-caladea my-4">

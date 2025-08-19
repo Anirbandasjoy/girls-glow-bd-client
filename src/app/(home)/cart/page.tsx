@@ -18,7 +18,7 @@ export default function ShopCart() {
 
       const responses: any = await Promise.all(
         storedCart.map(async (item: { product: string; quantity: number }) => {
-          const res = await fetch(`${baseApi}/api/v1/product/${item.product}`);
+          const res = await fetch(`${baseApi}/product/${item.product}`);
           const data = await res.json();
 
           return { ...data, quantity: item.quantity };
@@ -35,8 +35,8 @@ export default function ShopCart() {
   return (
     <div>
       <CartBreadcrumb />
-      <div className="px-[5%]">
-        <div className="flex flex-col lg:flex-row gap-5 mt-10 mb-20 max-w-screen-xl mx-auto">
+      <div className="px-[5%] bg-white">
+        <div className="flex flex-col lg:flex-row gap-5 pt-10 pb-20 max-w-screen-xl mx-auto">
           <CartTable
             cartProducts={cartProducts}
             setCartProducts={setCartProducts}
