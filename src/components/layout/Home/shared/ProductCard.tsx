@@ -53,26 +53,26 @@ export default function ProductCard({ product }: any) {
     }, 100);
   };
 
-  const handleViewDetails = () => {
-    window.dataLayer?.push({
-      event: "view_item",
-      ecommerce: {
-        items: [
-          {
-            item_id: product?._id,
-            item_slug: product?.slug,
-            price: Number(product?.price),
-            item_name: stripHtmlTags(product.productName),
-            item_image: product?.productImage,
-            shipping_cost: product?.shipping,
-            category: product?.category,
-            quantity: product?.quantity,
-            prvPrice: product?.prvPrice,
-          },
-        ],
-      },
-    });
-  };
+  // const handleViewDetails = () => {
+  //   window.dataLayer?.push({
+  //     event: "view_item",
+  //     ecommerce: {
+  //       items: [
+  //         {
+  //           item_id: product?._id,
+  //           item_slug: product?.slug,
+  //           price: Number(product?.price),
+  //           item_name: stripHtmlTags(product.productName),
+  //           item_image: product?.productImage,
+  //           shipping_cost: product?.shipping,
+  //           category: product?.category,
+  //           quantity: product?.quantity,
+  //           prvPrice: product?.prvPrice,
+  //         },
+  //       ],
+  //     },
+  //   });
+  // };
 
   return (
     <div className="group relative" key={product?._id}>

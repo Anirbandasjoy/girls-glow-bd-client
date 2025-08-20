@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { Quote, User, Star } from "lucide-react";
+import {User } from "lucide-react";
 import { useHandleGetAllReviewQuery } from "@/redux/features/review/reviewApi";
 import {
   Carousel,
@@ -12,21 +12,21 @@ import {
   CarouselPreviousReview,
 } from "@/components/ui/carousel";
 
-const StarRating = ({ rating }: { rating: number }) => {
-  return (
-    <div className="flex gap-1">
-      {[...Array(5)].map((_, index) => (
-        <Star
-          key={index}
-          size={16}
-          className={`${
-            index < rating ? "text-[#FF8A00] fill-[#FF8A00]" : "text-gray-300"
-          } transition-colors duration-200`}
-        />
-      ))}
-    </div>
-  );
-};
+// const StarRating = ({ rating }: { rating: number }) => {
+//   return (
+//     <div className="flex gap-1">
+//       {[...Array(5)].map((_, index) => (
+//         <Star
+//           key={index}
+//           size={16}
+//           className={`${
+//             index < rating ? "text-[#FF8A00] fill-[#FF8A00]" : "text-gray-300"
+//           } transition-colors duration-200`}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
 
 export default function Review() {
   const { data, isLoading, error } = useHandleGetAllReviewQuery({ search: "" });
@@ -51,7 +51,7 @@ export default function Review() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 overflow-hidden">
           <div className="w-[500px] h-[1px] bg-gray-400 mx-auto"></div>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 my-4">
             What our customer said
