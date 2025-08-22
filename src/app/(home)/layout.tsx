@@ -8,7 +8,7 @@ export default function HomeLayout({
 }>) {
   return (
     <div className="bg-[#F5F5F5] text-[#1A1A1A]">
-      <Navbar />
+      <Navbar className="" />
       <div className=" min-h-[50vh]">{children}</div>
       <Footer />
     </div>
