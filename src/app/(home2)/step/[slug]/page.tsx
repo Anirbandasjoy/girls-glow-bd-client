@@ -109,7 +109,9 @@ export default function Page({ params }: any) {
 
   return (
     <main className=" mx-auto bg-[#FAF9F6]">
-      <Navbar />
+      <div className="">
+        <Navbar className="my-6"/>
+      </div>
       <ShopDetails slug={slug} />
       <Footer />
     </main>

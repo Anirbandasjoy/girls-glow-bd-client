@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Input } from "@/components/ui/input";
@@ -25,7 +26,7 @@ interface IData {
   updatedAt: string;
 }
 
-const Navbar = () => {
+const Navbar = ({ className }: { className: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [search, setSearch] = useState("");
@@ -64,23 +65,31 @@ const Navbar = () => {
 
   return (
     <>
-      <div className=" bg-black text-white py-2   px-[5%]">
-        <div className=" max-w-screen-xl mx-auto flex flex-wrap justify-between items-center gap-5">
-          <h1>Call us or send message on What’s app for order - </h1>
-          <div className="flex flex-wrap gap-5">
-            <p className="flex items-center gap-1">
-              <MdEmail size={20} /> ponnobari@gmail.com
+      <div className="bg-black text-white py-2 px-[5%]">
+        <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+          {/* Left text */}
+          <h1 className="text-sm sm:text-base">
+            Call us or send message on What’s app for order -
+          </h1>
+
+          {/* Right side contact info */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center">
+            <p className="flex items-center gap-1 text-sm sm:text-base">
+              <MdEmail size={18} /> ponnobari@gmail.com
             </p>
-            <p className="flex items-center gap-1">
-              <Phone size={20} /> 0123 456 789
+            <p className="flex items-center gap-1 text-sm sm:text-base">
+              <Phone size={18} /> 0123 456 789
             </p>
           </div>
         </div>
       </div>
-      <nav className=" text-black relative z-30">
-        <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-6  py-2 sm:py-4 relative z-20">
+
+      <nav className={`text-black relative z-30 ${className}`}>
+        <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-0    relative z-20">
           {/* Logo */}
-          Logo
+          <Link href="/" className="max-w-[15rem] sm:-ml-5">
+            <img src="./logo.png" alt="logo" className="w-full h-fit" />
+          </Link>
           {/* Search - Desktop */}
           {/* Nav Links - Desktop */}
           <div className="flex">
@@ -196,7 +205,9 @@ const Navbar = () => {
           <div className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm">
             <div className="absolute top-0 left-0 w-4/5 h-full bg-white text-black p-6 transition-transform duration-300 ease-in-out animate-slideIn">
               <div className="flex justify-between items-center mb-6">
-               Logo
+                <Link href="/" className="max-w-[15rem] -ml-6">
+                  <img src="./logo.png" alt="logo" className="w-full h-fit" />
+                </Link>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="text-black text-3xl"
