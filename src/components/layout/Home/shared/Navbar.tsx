@@ -5,14 +5,16 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { MdEmail, MdLocalGroceryStore } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import { GrMenu } from "react-icons/gr";
 import { TiDeleteOutline } from "react-icons/ti";
 import { AiOutlineSearch } from "react-icons/ai";
 import { usePathname } from "next/navigation";
 import { useHandleFindProductQuery } from "@/redux/features/product/productApi";
 import { useLoggedInUserQuery } from "@/redux/features/users/userApi";
-import { Phone, Search } from "lucide-react";
+import { Phone, Search, X } from "lucide-react";
+import Marquee from "react-fast-marquee";
+import { RiShoppingCart2Fill } from "react-icons/ri";
 
 interface IData {
   _id: string;
@@ -42,10 +44,10 @@ const Navbar = ({ className }: { className: string }) => {
   const products: IData[] = data?.payload || [];
   const path = usePathname();
 
-  const activeLink = (pathValue: string) =>
-    path === pathValue
-      ? "font-semibold underline underline-offset-4"
-      : "hover:text-gray-900 transition";
+const activeLink = (pathValue: string) =>
+  path === pathValue
+    ? "relative font-semibold after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-black after:scale-x-100 after:origin-bottom-left after:transition-transform after:duration-300"
+    : "relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-black after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100";
 
   useEffect(() => {
     const updateCartCount = () => {
@@ -63,29 +65,54 @@ const Navbar = ({ className }: { className: string }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [isOpen]);
+
   return (
     <>
-      <div className="bg-black text-white py-2 px-[5%]">
-        <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+      <div className="bg-black text-white py-2 lg:px-[5%]">
+        <div className="max-w-screen-xl mx-auto hidden lg:flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left ">
           {/* Left text */}
           <h1 className="text-sm sm:text-base">
-            Call us or send message on What’s app for order -
+            Call us or send message on What’s app for order
           </h1>
 
           {/* Right side contact info */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center">
             <p className="flex items-center gap-1 text-sm sm:text-base">
-              <MdEmail size={18} /> ponnobari@gmail.com
+              <MdEmail size={18} /> support@domain.com
             </p>
             <p className="flex items-center gap-1 text-sm sm:text-base">
-              <Phone size={18} /> 0123 456 789
+              <Phone size={18} /> 01877726999
             </p>
           </div>
+        </div>
+        <div className="block lg:hidden">
+          <Marquee>
+            <div className="flex items-center gap-12">
+              <h1 className="text-sm sm:text-base">
+                Call us or send message on What’s app for order
+              </h1>
+              <p className="flex items-center gap-1 text-sm sm:text-base">
+                <MdEmail size={18} /> support@domain.com
+              </p>
+              <p className="flex items-center gap-1 text-sm sm:text-base">
+                <Phone size={18} /> 01877726999
+              </p>
+
+            </div>
+          </Marquee>
         </div>
       </div>
 
       <nav className={`text-black relative z-30 ${className}`}>
-        <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-0    relative z-20">
+        <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-0    relative z-50">
           {/* Logo */}
           <Link href="/" className="max-w-[15rem] sm:-ml-5">
             <img src="./logo.png" alt="logo" className="w-full h-fit" />
@@ -103,9 +130,9 @@ const Navbar = ({ className }: { className: string }) => {
               <Link href="/about" className={activeLink("/about")}>
                 About
               </Link>
-              <Link href="/contact" className={activeLink("/contact")}>
+              {/* <Link href="/contact" className={activeLink("/contact")}>
                 Contact
-              </Link>
+              </Link> */}
               {user && (
                 <Link href="/dashboard" className={activeLink("/dashboard")}>
                   Dashboard
@@ -167,11 +194,11 @@ const Navbar = ({ className }: { className: string }) => {
 
               {/* Cart */}
               <Link href="/cart" className="relative group">
-                <div className="w-10 h-10 rounded-full bg-white text-forest-green flex items-center justify-center transition hover:scale-105">
-                  <MdLocalGroceryStore className="text-xl" />
+                <div className=" text-black flex items-center justify-center transition hover:scale-105">
+                  <RiShoppingCart2Fill className=" text-2xl lg:text-3xl" />
                 </div>
                 {cartCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center border">
+                  <span className="absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center border">
                     {cartCount}
                   </span>
                 )}
@@ -183,7 +210,7 @@ const Navbar = ({ className }: { className: string }) => {
                 }}
                 className="sm:hidden text-2xl text-Black"
               >
-                {isOpen ? <TiDeleteOutline /> : <GrMenu />}
+                {isOpen ? <X className="text-xl" /> : <GrMenu />}
               </button>
 
               {/*  Mobile Menu Toggle */}
@@ -201,48 +228,38 @@ const Navbar = ({ className }: { className: string }) => {
         </div>
 
         {/* Mobile Menu Overlay */}
-        {isOpen && (
-          <div className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm">
-            <div className="absolute top-0 left-0 w-4/5 h-full bg-white text-black p-6 transition-transform duration-300 ease-in-out animate-slideIn">
-              <div className="flex justify-between items-center mb-6">
-                <Link href="/" className="max-w-[15rem] -ml-6">
-                  <img src="./logo.png" alt="logo" className="w-full h-fit" />
-                </Link>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-black text-3xl"
-                >
-                  <TiDeleteOutline />
-                </button>
-              </div>
-              <div className="space-y-6 text-lg flex flex-col font-medium">
-                <Link onClick={() => setIsOpen(false)} href="/">
-                  Home
-                </Link>
-                <Link onClick={() => setIsOpen(false)} href="/shop">
-                  Shop
-                </Link>
-                <Link onClick={() => setIsOpen(false)} href="/about">
-                  About
-                </Link>
-                <Link onClick={() => setIsOpen(false)} href="/contact">
-                  Contact
-                </Link>
-                {user && (
-                  <Link onClick={() => setIsOpen(false)} href="/dashboard">
-                    Dashboard
-                  </Link>
-                )}
-              </div>
-            </div>
+
+        <div
+          className={`fixed top-0 left-0 w-full flex flex-col gap-4   bg-white/30 backdrop-blur-sm pt-32 pb-5 z-30 px-[5%] transform duration-700 lg:hidden shadow ${isOpen ? "translate-y-0" : "-translate-y-full"
+            }`}
+        >
+          <div className="space-y-6 text-lg flex flex-col font-medium">
+            <Link onClick={() => setIsOpen(false)} href="/">
+              Home
+            </Link>
+            <Link onClick={() => setIsOpen(false)} href="/shop">
+              Shop
+            </Link>
+            <Link onClick={() => setIsOpen(false)} href="/about">
+              About
+            </Link>
+            {/* <Link onClick={() => setIsOpen(false)} href="/contact">
+              Contact
+            </Link> */}
+            {user && (
+              <Link onClick={() => setIsOpen(false)} href="/dashboard">
+                Dashboard
+              </Link>
+            )}
           </div>
-        )}
+        </div>
+
 
         {/* Mobile Search Overlay */}
         {isOpenSearch && (
           <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm px-5 pt-28 sm:hidden">
             <button
-              className="absolute top-8 right-5 text-white text-3xl"
+              className="absolute top-14 right-5 text-white text-3xl"
               onClick={() => setIsOpenSearch(false)}
             >
               <TiDeleteOutline />

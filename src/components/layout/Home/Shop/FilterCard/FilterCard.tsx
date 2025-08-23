@@ -73,10 +73,10 @@ const FilterCard: React.FC<FilterCardProps> = ({
 
   return (
     <>
-      <div className="w-80 space-y-5 h-fit hidden sm:block">
+      <div className="w-80 space-y-5 h-fit hidden sm:block font-inter">
         <div className="bg-[#F5F5F5] p-5 space-y-5 rounded">
-          <h1 className="flex justify-between items-center gap-5 text-forest-green text-xl font-medium ">
-            Category <FaAngleRight className="text-forest-green" />
+          <h1 className="flex justify-between items-center gap-5 text-midnight-navy text-xl font-medium ">
+            Category <FaAngleRight className="text-midnight-navy" />
           </h1>
           <div className="w-full h-px bg-[#C4C4C4]"></div>
           <RadioGroup
@@ -114,8 +114,8 @@ const FilterCard: React.FC<FilterCardProps> = ({
           </RadioGroup>
         </div>
         <div className="bg-[#F5F5F5] p-5 space-y-5 rounded">
-          <h1 className="flex justify-between items-center gap-5 text-forest-green text-xl font-medium ">
-            Price Range <FaAngleRight className="text-forest-green" />
+          <h1 className="flex justify-between items-center gap-5 text-midnight-navy text-xl font-medium ">
+            Price Range <FaAngleRight className="text-midnight-navy" />
           </h1>
           <div className="w-full h-px bg-[#C4C4C4]"></div>
           <div className="space-y-2">
@@ -146,9 +146,9 @@ const FilterCard: React.FC<FilterCardProps> = ({
         <div className="bg-white p-5 space-y-5 rounded">
           <h1
             onClick={() => setIsOpen(!isOpen)}
-            className="flex justify-between items-center gap-5 text-forest-green text-xl font-medium "
+            className="flex justify-between items-center gap-5 text-midnight-navy text-xl font-medium "
           >
-            Category <FaAngleRight className="text-forest-green" />
+            Category <FaAngleRight className="text-midnight-navy" />
           </h1>
           <div className="w-full h-px bg-[#C4C4C4]"></div>
           <RadioGroup

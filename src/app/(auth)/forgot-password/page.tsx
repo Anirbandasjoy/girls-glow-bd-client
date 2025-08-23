@@ -43,8 +43,8 @@ const ForgotPassword = () => {
     <PublicRoute>
       {isLoading && <Loading />}
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-lg">
-          <h2 className="text-3xl font-bold text-green-600 text-center mb-4">
+        <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+          <h2 className="text-3xl font-bold text-golden text-center mb-4">
             Forgot Your Password
           </h2>
           <p className="text-gray-500 text-center text-[14px] mb-6 mt-1">
@@ -56,7 +56,7 @@ const ForgotPassword = () => {
               <Input
                 type="email"
                 placeholder="name@example.com"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
+                className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -73,7 +73,7 @@ const ForgotPassword = () => {
 
               <Button
                 type="submit"
-                className="w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 mt-5"
+                className="w-full py-2 bg-golden text-white font-semibold rounded hover:bg-golden/90 mt-5"
               >
                 Send Email
               </Button>

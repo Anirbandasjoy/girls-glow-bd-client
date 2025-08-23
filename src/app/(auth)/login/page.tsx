@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { FaGem } from "react-icons/fa";
 
 type FormData = {
   email: string;
@@ -48,11 +49,12 @@ const Login = () => {
   return (
     <PublicRoute>
       {isLoading && <Loading />}
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-lg">
-          <h2 className="text-3xl font-bold text-green-600 text-center mb-4">
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 font-inter ">
+        <div className="w-full max-w-md p-8 bg-white rounded-md shadow-lg">
+          <h2 className="text-3xl font-bold text-golden text-center mb-4">
             Welcome Back!
           </h2>
+          <FaGem className="mx-auto text-5xl text-[#FFD700] mb-4" />
           <p className="text-gray-500 text-center text-sm mb-6">
             Sign in to your account and start exploring.
           </p>
@@ -62,7 +64,7 @@ const Login = () => {
               <Input
                 type="email"
                 placeholder="Email Address"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-golden"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -79,7 +81,7 @@ const Login = () => {
                 <Input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                  className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-golden"
                   {...register("password", {
                     required: "Password is required",
                     minLength: {
@@ -101,7 +103,7 @@ const Login = () => {
 
               <Button
                 type="submit"
-                className="w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700"
+                className="w-full py-2 bg-golden text-white font-semibold rounded hover:bg-golden/80"
               >
                 Sign In
               </Button>
@@ -111,7 +113,7 @@ const Login = () => {
               Forgot your password?{" "}
               <Link
                 href="/forgot-password"
-                className="text-green-600 hover:underline"
+                className="text-blue-500 hover:underline"
               >
                 Reset it here
               </Link>

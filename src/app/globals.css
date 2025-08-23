@@ -27,6 +27,7 @@ html {
   --color-warm-ivory: #F6F6EE;         /* Soft warm ivory background */
   --color-pageColor:#FCF8F5;
   --color-gray: #E4E9E6;
+  --color-golden:#E6C200;
 }
 
 @font-face {
@@ -38,6 +39,10 @@ html {
   font-family: 'Siyamrupali';
   src: url('@/../../components/fonts/Siyamrupali.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'BellMT';
+  src: url('@/../../components/fonts/BellMT.ttf') format('truetype');
+}
 
 
 @theme{
@@ -45,6 +50,7 @@ html {
   --font-montserrat: var(--font-montserrat);
   --font-caladea: var(--font-caladea);
   --font-tiro_bangla: var(--font-tiro_bangla);
+  --font-inter: var(--font-inter)
 }
 
 

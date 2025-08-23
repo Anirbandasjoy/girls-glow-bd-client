@@ -31,7 +31,7 @@ export default function AboutSection() {
           About Us
         </h1>
         <hr className="my-6 border-t border-gray-300" />
-        <p className="text-[#656565] text-center">
+        <p className="text-[#656565] text-start">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut

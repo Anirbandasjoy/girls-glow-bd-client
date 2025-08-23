@@ -53,6 +53,7 @@ export default function FeaturedProduct() {
 
   // Filter products based on active category (implement your filtering logic)
   const filteredProducts = products; // Add your filtering logic here
+  console.log(filteredProducts)
 
   if (error) {
     return (

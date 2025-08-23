@@ -10,7 +10,7 @@ export function ShopBreadcrumb() {
   return (
     <div className="px-[5%] ">
       <div className="max-w-screen-xl mx-auto py-10 text-[#0E243A] flex flex-col justify-between items-center gap-5 w-full rounded">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium">Shop</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium" style={{ fontFamily: 'BellMT' }}>Shop</h1>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -33,5 +33,5 @@ export function ShopBreadcrumb() {
         </Breadcrumb>
       </div>
     </div>
-  );
+  ); 
 }

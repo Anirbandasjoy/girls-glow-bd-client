@@ -9,6 +9,7 @@ import {
   Montserrat,
   Caladea,
   Tiro_Bangla,
+  Inter
 } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
@@ -22,6 +23,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -95,7 +101,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.className} ${roboto.variable} ${caladea.variable} ${tiro_bangla.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${montserrat.className} ${roboto.variable} ${caladea.variable} ${tiro_bangla.variable} antialiased`}
       >
         {/*  GTM Body noscript */}
         <noscript

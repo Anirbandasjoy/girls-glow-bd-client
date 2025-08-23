@@ -11,13 +11,13 @@ export function AboutBreadcrumb() {
   return (
     <div className="px-[5%]">
       <div className="max-w-screen-xl mx-auto py-10 text-[#0E243A] flex flex-col justify-between items-center gap-5 w-full rounded">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium">About</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium" style={{ fontFamily: 'BellMT' }}>About</h1>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink
                 href="/"
-                className="text-lg font-medium text-[#0E243A] hover:text-white hover:underline"
+                className="text-lg font-medium text-[#0E243A] hover:text-gray-500 hover:underline"
               >
                 Home
               </BreadcrumbLink>
@@ -27,7 +27,7 @@ export function AboutBreadcrumb() {
               /
             </p>
             <BreadcrumbItem>
-              <BreadcrumbPage className=" text-lg font-medium text-[#0E243A]">About</BreadcrumbPage>
+              <BreadcrumbPage className=" text-lg font-medium text-[#0E243A]" >About</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
