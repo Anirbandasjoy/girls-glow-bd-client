@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { FiPhone } from "react-icons/fi";
-import { MdOutlineEmail } from "react-icons/md";
-import { CiLocationOn } from "react-icons/ci";
+import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 import Link from "next/link";
 
 export default function Footer() {
@@ -20,8 +19,8 @@ export default function Footer() {
                 className="w-52 h-auto sm:w-64"
               />
             </Link>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-gray-600">
-              Ponnobari is your trusted online shop for premium ornaments and
+            <p className=" max-w-md text-sm leading-relaxed text-gray-600">
+              Girl&apos;s glow BD is your trusted online shop for premium ornaments and
               lifestyle products. We bring quality with elegance right to your
               doorstep. Stay connected with us for exciting offers and new
               arrivals.
@@ -80,7 +79,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CiLocationOn size={18} className="flex-shrink-0 mt-1" />
+                <MdOutlineLocationOn size={20} className="flex-shrink-0 mt-1" />
                 <a
                   href="https://www.google.com/maps/search/706+Campfire+Ave.+Meriden,+CT+06450"
                   target="_blank"

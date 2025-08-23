@@ -11,14 +11,14 @@ export default function AboutUs() {
             alt="About Us"
             width={500}
             height={500}
-            className="w-full rounded-lg"
+            className="w-full rounded-lg blur-xl"
           />
           <Image
             src="/a2.png"
             alt="About Us"
             width={500}
             height={500}
-            className="w-full rounded-lg"
+            className="w-full rounded-lg blur-xl"
           />
         </div>
         <div className="bg-white p-5 sm:p-10 w-full lg:w-3/5">

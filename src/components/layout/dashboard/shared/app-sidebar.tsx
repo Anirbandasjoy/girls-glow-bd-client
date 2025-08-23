@@ -9,10 +9,11 @@ import {
   Plus,
   // ScrollText,
   ShoppingBasket,
-  TestTubeIcon,
   UserCog,
   UserRoundPen,
   Users,
+  ShieldHalf,
+  MessageCircle 
 } from "lucide-react";
 
 import {
@@ -125,7 +126,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {
         title: "Team",
         url: "#",
-        icon: TestTubeIcon,
+        icon: ShieldHalf,
         isActive: false,
         items: [
           {
@@ -143,7 +144,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {
         title: "Reviews",
         url: "#",
-        icon: TestTubeIcon,
+        icon:MessageCircle,
         isActive: false,
         items: [
           {
