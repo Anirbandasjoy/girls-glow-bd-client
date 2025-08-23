@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
@@ -12,8 +13,6 @@ import {
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import ReduxWrapper from "@/redux/ReduxWrapper";
-import { GoogleTagManager } from "@next/third-parties/google";
-import { GTMPageViewTracker } from "@/components/GTMPageViewTracker";
 import RightClickDisable from "@/components/RightClickDisable";
 
 const geistSans = Geist({
@@ -48,8 +47,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Glow girls bd",
-  description: "Glow girls bd description",
+  title: "Premium Lungi BD",
+  description: "Premium Lungi BD official website",
 };
 
 export default function RootLayout({
@@ -60,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* ✅ Facebook Pixel Code */}
+        {/* Meta Pixel Code */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -72,42 +71,55 @@ export default function RootLayout({
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '1783814055829519');
+              fbq('init', '1075033951371216'); 
               fbq('track', 'PageView');
             `,
           }}
         />
+
+        {/* ✅ GTM Head Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){
+                w[l]=w[l]||[];
+                w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-MQN9P5DH');
+            `,
+          }}
+        />
+      </head>
+
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.className} ${roboto.variable} ${caladea.variable} ${tiro_bangla.variable} antialiased`}
+      >
+        {/*  GTM Body noscript */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQN9P5DH" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        />
+
+        {/*  Meta Pixel noscript */}
         <noscript>
           <img
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1783814055829519&ev=PageView&noscript=1"
+            src="https://www.facebook.com/tr?id=1075033951371216&ev=PageView&noscript=1"
           />
         </noscript>
-        {/* ✅ End Facebook Pixel */}
-      </head>
 
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
-
-      <ReduxWrapper>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} ${montserrat.className} ${roboto.variable} ${caladea.variable} ${tiro_bangla.variable} antialiased`}
-        >
-          <GTMPageViewTracker />
+        <ReduxWrapper>
           <RightClickDisable />
           <main>{children}</main>
           <Toaster position="top-center" reverseOrder={false} />
-          <div className="">
-            {/* <FacebookMessengerButton />
-            <CallButton />
-            <TawkToChat /> */}
-          </div>
-        </body>
-      </ReduxWrapper>
+        </ReduxWrapper>
+      </body>
     </html>
   );
 }
-
-// cartcard
-// carttable
