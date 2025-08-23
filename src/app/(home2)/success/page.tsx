@@ -18,10 +18,10 @@ import {
 import { FiDownload } from "react-icons/fi";
 
 // Utility function to strip HTML tags
-function stripHtmlTags(str: string) {
-  if (!str) return "";
-  return str.replace(/<[^>]+>/g, "");
-}
+// function stripHtmlTags(str: string) {
+//   if (!str) return "";
+//   return str.replace(/<[^>]+>/g, "");
+// }
 
 export default function ShopCart() {
   const [response, setResponse] = useState<any>(null);
@@ -41,49 +41,49 @@ export default function ShopCart() {
 
   const products = data?.payload?.products;
 
-  useEffect(() => {
-    if (data && products) {
-      const items = products.map((item: any) => ({
-        item_id: item?.product?._id,
-        item_slug: item?.product?.slug,
-        price: Number(item?.price),
-        item_name: stripHtmlTags(item?.product?.productName),
-        item_image: item?.product?.productImage,
-        item_tag_line: stripHtmlTags(item?.product?.tagline),
-        shipping_cost: item?.product?.shipping,
-        unit: stripHtmlTags(item?.product?.unit),
-        buyingReason: {
-          heading: stripHtmlTags(item?.product?.buyingReason?.heading),
-          steps: item?.product?.buyingReason?.steps,
-        },
-        hadith: stripHtmlTags(item?.product?.hadith),
-        benefits: {
-          heading: stripHtmlTags(item?.product?.benefits?.heading),
-          steps: item?.product?.benefits?.steps,
-        },
-        category: item?.product?.category,
-        quantity: item?.quantity,
-        prvPrice: item?.product?.prvPrice,
-      }));
+  // useEffect(() => {
+  //   if (data && products) {
+  //     const items = products.map((item: any) => ({
+  //       item_id: item?.product?._id,
+  //       item_slug: item?.product?.slug,
+  //       price: Number(item?.price),
+  //       item_name: stripHtmlTags(item?.product?.productName),
+  //       item_image: item?.product?.productImage,
+  //       item_tag_line: stripHtmlTags(item?.product?.tagline),
+  //       shipping_cost: item?.product?.shipping,
+  //       unit: stripHtmlTags(item?.product?.unit),
+  //       buyingReason: {
+  //         heading: stripHtmlTags(item?.product?.buyingReason?.heading),
+  //         steps: item?.product?.buyingReason?.steps,
+  //       },
+  //       hadith: stripHtmlTags(item?.product?.hadith),
+  //       benefits: {
+  //         heading: stripHtmlTags(item?.product?.benefits?.heading),
+  //         steps: item?.product?.benefits?.steps,
+  //       },
+  //       category: item?.product?.category,
+  //       quantity: item?.quantity,
+  //       prvPrice: item?.product?.prvPrice,
+  //     }));
 
-      window.dataLayer?.push({
-        event: "purchase",
-        ecommerce: {
-          transaction_id: response?.payload?._id,
-          value: response?.payload?.totalAmount,
-          tax: 0,
-          shipping: response?.payload?.shippingCost,
-          currency: "BDT",
-          items: items,
-          userInfo: {
-            name: response?.payload?.user?.name || "N/A",
-            phone: response?.payload?.user?.phone || "N/A",
-            address: response?.payload?.user?.address || "N/A",
-          },
-        },
-      });
-    }
-  }, [data, products, response]);
+  //     window.dataLayer?.push({
+  //       event: "purchase",
+  //       ecommerce: {
+  //         transaction_id: response?.payload?._id,
+  //         value: response?.payload?.totalAmount,
+  //         tax: 0,
+  //         shipping: response?.payload?.shippingCost,
+  //         currency: "BDT",
+  //         items: items,
+  //         userInfo: {
+  //           name: response?.payload?.user?.name || "N/A",
+  //           phone: response?.payload?.user?.phone || "N/A",
+  //           address: response?.payload?.user?.address || "N/A",
+  //         },
+  //       },
+  //     });
+  //   }
+  // }, [data, products, response]);
 
   const handleDownloadInvoice = async () => {
     setLoading(true);

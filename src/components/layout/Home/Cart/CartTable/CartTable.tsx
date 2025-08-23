@@ -29,49 +29,46 @@ export default function CartTable({
       quantity: item.quantity,
     }));
     localStorage.setItem("ponnoBariCart", JSON.stringify(simplified));
-    console.log(simplified)
+    console.log(simplified);
   };
-
 
   const updateQuantity = (slug: string, type: "increment" | "decrement") => {
     setCartProducts((prev: any[]) => {
       const updated = prev.map((item) => {
         if (item.payload.slug === slug) {
           if (type === "increment") {
-            const product = item.payload;
-       
-            const newQuantity = item.quantity + 1;
-
-            window.dataLayer?.push({
-              event: "add_to_cart",
-              ecommerce: {
-                currency: "BDT",
-                items: [
-                  {
-                    item_id: product?._id,
-                    item_slug: product?.slug,
-                    price: Number(product?.price),
-                    item_name: stripHtmlTags(product.productName),
-                    item_image: product?.productImage,
-                    item_tag_line: stripHtmlTags(product?.tagline),
-                    shipping_cost: product?.shipping,
-                    unit: stripHtmlTags(product?.unit),
-                    buyingReason: {
-                      heading : stripHtmlTags(product?.buyingReason?.heading),
-                      steps : product?.buyingReason?.steps
-                    },
-                    hadith: stripHtmlTags(product?.hadith),
-                    benefits: {
-                      heading : stripHtmlTags(product?.benefits?.heading),
-                      steps : product?.benefits?.steps
-                    },
-                    category: product?.category,
-                    quantity: newQuantity,
-                    prvPrice: product?.prvPrice,
-                  },
-                ],
-              },
-            });
+            // const product = item.payload;
+            // const newQuantity = item.quantity + 1;
+            // window.dataLayer?.push({
+            //   event: "add_to_cart",
+            //   ecommerce: {
+            //     currency: "BDT",
+            //     items: [
+            //       {
+            //         item_id: product?._id,
+            //         item_slug: product?.slug,
+            //         price: Number(product?.price),
+            //         item_name: stripHtmlTags(product.productName),
+            //         item_image: product?.productImage,
+            //         item_tag_line: stripHtmlTags(product?.tagline),
+            //         shipping_cost: product?.shipping,
+            //         unit: stripHtmlTags(product?.unit),
+            //         buyingReason: {
+            //           heading : stripHtmlTags(product?.buyingReason?.heading),
+            //           steps : product?.buyingReason?.steps
+            //         },
+            //         hadith: stripHtmlTags(product?.hadith),
+            //         benefits: {
+            //           heading : stripHtmlTags(product?.benefits?.heading),
+            //           steps : product?.benefits?.steps
+            //         },
+            //         category: product?.category,
+            //         quantity: newQuantity,
+            //         prvPrice: product?.prvPrice,
+            //       },
+            //     ],
+            //   },
+            // });
           }
           const newQty =
             type === "increment"
