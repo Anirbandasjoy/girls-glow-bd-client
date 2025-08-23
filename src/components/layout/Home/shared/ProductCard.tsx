@@ -5,10 +5,10 @@ import toast from "react-hot-toast";
 
 // Utility function to strip HTML tags
 // update
-function stripHtmlTags(str: string) {
-  if (!str) return "";
-  return str.replace(/<[^>]+>/g, "");
-}
+// function stripHtmlTags(str: string) {
+//   if (!str) return "";
+//   return str.replace(/<[^>]+>/g, "");
+// }
 
 export default function ProductCard({ product }: any) {
   const handleAddToCart = () => {
@@ -24,26 +24,26 @@ export default function ProductCard({ product }: any) {
       storedCart.push({ product: product.slug, quantity: 1 });
       localStorage.setItem("ponnoBariCart", JSON.stringify(storedCart));
       toast.success("Added to cart");
-      window.dataLayer?.push({
-        event: "add_to_cart",
-        ecommerce: {
-          currency: "BDT",
-          items: [
-            {
-              item_id: product?._id,
-              item_slug: product?.slug,
-              price: Number(product?.price),
-              item_name: stripHtmlTags(product.productName),
-              item_image: product?.productImage,
-              item_tag_line: stripHtmlTags(product?.tagline),
-              shipping_cost: product?.shipping,
-              category: product?.category,
-              quantity: 1,
-              prvPrice: product?.prvPrice,
-            },
-          ],
-        },
-      });
+      // window.dataLayer?.push({
+      //   event: "add_to_cart",
+      //   ecommerce: {
+      //     currency: "BDT",
+      //     items: [
+      //       {
+      //         item_id: product?._id,
+      //         item_slug: product?.slug,
+      //         price: Number(product?.price),
+      //         item_name: stripHtmlTags(product.productName),
+      //         item_image: product?.productImage,
+      //         item_tag_line: stripHtmlTags(product?.tagline),
+      //         shipping_cost: product?.shipping,
+      //         category: product?.category,
+      //         quantity: 1,
+      //         prvPrice: product?.prvPrice,
+      //       },
+      //     ],
+      //   },
+      // });
     } else {
       toast.error("Already added to cart");
     }

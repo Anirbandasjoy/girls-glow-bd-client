@@ -83,7 +83,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* ✅ GTM Head Script */}
+        {/*  GTM Head Script */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
