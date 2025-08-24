@@ -119,7 +119,7 @@ export default function CartCard({ cartProducts, setCartProducts }: any) {
       toast.success("Order Placed Successfully!");
       // Store response in localStorage
       localStorage.setItem("orderData", JSON.stringify(response));
-      localStorage.removeItem("ponnoBariCart");
+      localStorage.removeItem("GirlglowBDCart");
       setCartProducts([]);
 
       router.push("/success");

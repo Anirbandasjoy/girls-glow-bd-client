@@ -1,8 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { FiPhone } from "react-icons/fi";
-import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 import Link from "next/link";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -13,17 +13,13 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block sm:-ml-6 -ml-4">
-              <img
-                src="/logo.png"
-                alt="logo"
-                className="w-52 h-auto sm:w-64"
-              />
+              <img src="/logo.png" alt="logo" className="w-52 h-auto sm:w-64" />
             </Link>
             <p className=" max-w-md text-sm leading-relaxed text-gray-600">
-              Girl&apos;s glow BD is your trusted online shop for premium ornaments and
-              lifestyle products. We bring quality with elegance right to your
-              doorstep. Stay connected with us for exciting offers and new
-              arrivals.
+              Girl&apos;s glow BD is your trusted online shop for premium
+              ornaments and lifestyle products. We bring quality with elegance
+              right to your doorstep. Stay connected with us for exciting offers
+              and new arrivals.
             </p>
           </div>
 
@@ -62,14 +58,15 @@ export default function Footer() {
 
             <div className="space-y-5 text-gray-700 text-sm">
               <div className="flex items-center gap-3">
-                <FiPhone size={18} className="flex-shrink-0" />
+        
+                <Phone className="w-4 h-4"/>
                 <a href="tel:+3104372766" className="hover:text-[#E6C200]">
                   +310-437-2766
                 </a>
               </div>
 
               <div className="flex items-center gap-3">
-                <MdOutlineEmail size={18} className="flex-shrink-0" />
+       <Mail className="w-4 h-4"/>
                 <a
                   href="mailto:unreal@outlook.com"
                   className="hover:text-[#E6C200]"
@@ -79,7 +76,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-start gap-3">
-                <MdOutlineLocationOn size={20} className="flex-shrink-0 mt-1" />
+                <MapPin className="w-4 h-4"/>
                 <a
                   href="https://www.google.com/maps/search/706+Campfire+Ave.+Meriden,+CT+06450"
                   target="_blank"
@@ -95,7 +92,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t pt-6 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Ponnobari. All rights reserved.
+          © {new Date().getFullYear()} Girl's glowBD. All rights reserved.
+          <br />
+          <br />
+          <span>Made By <a target="_blank" href="http://qrinux.com">Qrinux Inc</a></span>
         </div>
       </div>
     </footer>

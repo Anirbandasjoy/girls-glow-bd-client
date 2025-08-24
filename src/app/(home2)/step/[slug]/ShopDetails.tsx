@@ -277,7 +277,7 @@ const ShopDetails = ({ slug }: any) => {
             <div className="bg-white px-[5%]">
               <div className="max-w-screen-lg mx-auto py-10 ">
                 <h1 className="text-2xl sm:text-3xl lg:text-[40px] ">
-                  Product Detail
+                  Product Details
                 </h1>
                 <hr className="my-5" />
                 <p

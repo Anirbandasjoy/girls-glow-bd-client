@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       // disallow: "/private/",
     },
-    sitemap: "https://server.ponnobari.store/api/v1/sitemap.xml",
+    sitemap: "https://server.GirlglowBD.store/api/v1/sitemap.xml",
   };
 }

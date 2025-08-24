@@ -44,15 +44,15 @@ const Navbar = ({ className }: { className: string }) => {
   const products: IData[] = data?.payload || [];
   const path = usePathname();
 
-const activeLink = (pathValue: string) =>
-  path === pathValue
-    ? "relative font-semibold after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-black after:scale-x-100 after:origin-bottom-left after:transition-transform after:duration-300"
-    : "relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-black after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100";
+  const activeLink = (pathValue: string) =>
+    path === pathValue
+      ? "relative font-semibold after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-black after:scale-x-100 after:origin-bottom-left after:transition-transform after:duration-300"
+      : "relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-black after:scale-x-0 after:origin-bottom-left after:transition-transform after:duration-300 hover:after:scale-x-100";
 
   useEffect(() => {
     const updateCartCount = () => {
       const storedCart = JSON.parse(
-        localStorage.getItem("ponnoBariCart") || "[]"
+        localStorage.getItem("GirlglowBDCart") || "[]"
       );
       setCartCount(storedCart.length);
     };
@@ -105,7 +105,6 @@ const activeLink = (pathValue: string) =>
               <p className="flex items-center gap-1 text-sm sm:text-base">
                 <Phone size={18} /> 01877726999
               </p>
-
             </div>
           </Marquee>
         </div>
@@ -148,35 +147,42 @@ const activeLink = (pathValue: string) =>
                   }}
                 />
                 <Search className="text-gray-400 absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" />
-                {search && products.length > 0 && (
+                {/* Desktop Search Dropdown */}
+                {search && (
                   <div className="absolute top-12 w-full bg-white text-black rounded-md z-50 max-h-96 overflow-y-auto">
-                    {products.map((product) => (
-                      <Link
-                        key={product._id}
-                        href={`/step/${product.slug}`}
-                        className="flex items-center gap-3 p-3 hover:bg-gray-100 transition"
-                      >
-                        <div className="w-14 h-14 relative rounded overflow-hidden border">
-                          <Image
-                            src={product.productImage}
-                            alt={product.productName}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div>
-                          <h4
-                            className="text-sm font-semibold"
-                            dangerouslySetInnerHTML={{
-                              __html: product.productName,
-                            }}
-                          />
-                          <p className="text-xs text-gray-500">
-                            ৳ {product.price}
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
+                    {products.length > 0 ? (
+                      products.map((product) => (
+                        <Link
+                          key={product._id}
+                          href={`/step/${product.slug}`}
+                          className="flex items-center gap-3 p-3 hover:bg-gray-100 transition"
+                        >
+                          <div className="w-14 h-14 relative rounded overflow-hidden border">
+                            <Image
+                              src={product.productImage}
+                              alt={product.productName}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div>
+                            <h4
+                              className="text-sm font-semibold"
+                              dangerouslySetInnerHTML={{
+                                __html: product.productName,
+                              }}
+                            />
+                            <p className="text-xs text-gray-500">
+                              ৳ {product.price}
+                            </p>
+                          </div>
+                        </Link>
+                      ))
+                    ) : (
+                      <p className="p-3 text-sm text-gray-500">
+                        No products found
+                      </p> // 👈 show message
+                    )}
                   </div>
                 )}
               </div>
@@ -230,8 +236,9 @@ const activeLink = (pathValue: string) =>
         {/* Mobile Menu Overlay */}
 
         <div
-          className={`fixed top-0 left-0 w-full flex flex-col gap-4   bg-white/30 backdrop-blur-sm pt-32 pb-5 z-30 px-[5%] transform duration-700 lg:hidden shadow ${isOpen ? "translate-y-0" : "-translate-y-full"
-            }`}
+          className={`fixed top-0 left-0 w-full flex flex-col gap-4   bg-white/30 backdrop-blur-sm pt-32 pb-5 z-30 px-[5%] transform duration-700 lg:hidden shadow ${
+            isOpen ? "translate-y-0" : "-translate-y-full"
+          }`}
         >
           <div className="space-y-6 text-lg flex flex-col font-medium">
             <Link onClick={() => setIsOpen(false)} href="/">
@@ -253,7 +260,6 @@ const activeLink = (pathValue: string) =>
             )}
           </div>
         </div>
-
 
         {/* Mobile Search Overlay */}
         {isOpenSearch && (

@@ -7,18 +7,18 @@ export default function AboutUs() {
       <div className="max-w-screen-xl mx-auto flex flex-col lg:flex-row gap-5">
         <div className="flex flex-col gap-5 h-full flex-1">
           <Image
-            src="/a1.png"
+            src="/glow2.jpg"
             alt="About Us"
             width={500}
             height={500}
-            className="w-full rounded-lg blur-xl"
+            className="w-full rounded-lg"
           />
           <Image
-            src="/a2.png"
+            src="/glow1.jpg"
             alt="About Us"
             width={500}
             height={500}
-            className="w-full rounded-lg blur-xl"
+            className="w-full rounded-lg"
           />
         </div>
         <div className="bg-white p-5 sm:p-10 w-full lg:w-3/5">
