@@ -1,6 +1,6 @@
 export default async function sitemap() {
   // This should be your FRONTEND website URL, not API URL
-  const baseUrl = "https://server.ponnobari.store";
+  const baseUrl = "https://server.GirlglowBD.store";
 
   // Static pages
   const staticPages = [
@@ -29,7 +29,7 @@ export default async function sitemap() {
 
   try {
     const response = await fetch(
-      "https://server.ponnobari.store/api/v1/product"
+      "https://server.GirlglowBD.store/api/v1/product"
     );
     const data = await response.json();
 

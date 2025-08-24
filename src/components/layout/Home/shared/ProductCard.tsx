@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 export default function ProductCard({ product }: any) {
   const handleAddToCart = () => {
     const storedCart = JSON.parse(
-      localStorage.getItem("ponnoBariCart") || "[]"
+      localStorage.getItem("GirlglowBDCart") || "[]"
     );
 
     const existingItemIndex = storedCart.findIndex(
@@ -22,7 +22,7 @@ export default function ProductCard({ product }: any) {
 
     if (existingItemIndex === -1) {
       storedCart.push({ product: product.slug, quantity: 1 });
-      localStorage.setItem("ponnoBariCart", JSON.stringify(storedCart));
+      localStorage.setItem("GirlglowBDCart", JSON.stringify(storedCart));
       toast.success("Added to cart");
       // window.dataLayer?.push({
       //   event: "add_to_cart",

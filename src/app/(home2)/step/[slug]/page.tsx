@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Home/shared/Navbar";
 import ShopDetails from "./ShopDetails";
 import Footer from "@/components/layout/Home/shared/Footer";
 
@@ -6,7 +5,7 @@ export async function generateMetadata({ params }: any) {
   const { slug } = params;
   try {
     const response = await fetch(
-      `https://server.ponnobari.store/api/v1/product/${slug}`
+      `https://server.GirlglowBD.store/api/v1/product/${slug}`
     );
 
     if (!response.ok) {
@@ -109,9 +108,6 @@ export default function Page({ params }: any) {
 
   return (
     <main className=" mx-auto bg-[#FAF9F6]">
-      <div className="">
-        <Navbar className="my-6"/>
-      </div>
       <ShopDetails slug={slug} />
       <Footer />
     </main>

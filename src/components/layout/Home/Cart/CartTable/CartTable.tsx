@@ -28,7 +28,7 @@ export default function CartTable({
       product: item.payload.slug,
       quantity: item.quantity,
     }));
-    localStorage.setItem("ponnoBariCart", JSON.stringify(simplified));
+    localStorage.setItem("GirlglowBDCart", JSON.stringify(simplified));
     console.log(simplified);
   };
 
@@ -85,14 +85,14 @@ export default function CartTable({
 
   const removedFromCart = (slug: string) => {
     const storedCart: { product: string; quantity: number }[] = JSON.parse(
-      localStorage.getItem("ponnoBariCart") || "[]"
+      localStorage.getItem("GirlglowBDCart") || "[]"
     );
 
     const updatedCart = storedCart.filter(
       (product) => product.product !== slug
     );
 
-    localStorage.setItem("ponnoBariCart", JSON.stringify(updatedCart));
+    localStorage.setItem("GirlglowBDCart", JSON.stringify(updatedCart));
 
     setCartProducts((prev: any[]) =>
       prev.filter((item) => item?.payload?.slug !== slug)
