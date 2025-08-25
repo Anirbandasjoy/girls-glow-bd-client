@@ -99,21 +99,22 @@ export default function FeaturedProduct() {
         >
           {isLoading || products.length === 0
             ? Array.from({ length: 8 }).map((_, index) => (
-                <ProductSkeleton key={index} />
-              ))
+              <ProductSkeleton key={index} />
+            ))
             : filteredProducts.map((product) => (
-                <div key={product._id}>
-                  <ProductCard product={product} />
-                </div>
-              ))}
+              <div key={product._id}>
+                <ProductCard product={product} />
+              </div>
+            ))}
         </div>
         <div className="flex justify-center items-center">
           <Link
             href="/shop"
-            className="text-black bg-[#E6C200] px-5 py-2 cursor-pointer w-fit mx-auto"
+            className="text-black bg-[#E6C200] px-5 py-2 cursor-pointer w-fit mx-auto hover:bg-[#c7a700] transition-colors duration-300"
           >
             Explore All
           </Link>
+
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-gradient-to-b  flex flex-col items-center justify-center p-6">
       <div className="text-center space-y-6">
-        <h1 className="text-8xl font-bold text-[#00590F] drop-shadow-lg">404</h1>
+        <h1 className="text-8xl font-bold text-[#E6C200] drop-shadow-lg" style={{ fontFamily: 'BellMT' }}>404</h1>
         <p className="text-xl text-gray-700 max-w-lg mx-auto">
           Sorry, the page you are looking for doesn&apos;t exist or has been moved.
           Please check the URL or return to the homepage.
@@ -20,7 +20,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 bg-[#008B18] text-white px-6 py-3 rounded-full shadow-lg hover:bg-[#00590F] transition-transform transform hover:scale-105 duration-300"
+            className="inline-flex text-black bg-[#E6C200] px-5 py-2 cursor-pointer w-fit mx-auto items-center gap-2 rounded-full shadow-lg hover:bg-[#E6C200]/90 transition-transform transform hover:scale-105 duration-300"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home

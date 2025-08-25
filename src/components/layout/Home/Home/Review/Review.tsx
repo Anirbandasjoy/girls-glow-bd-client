@@ -60,15 +60,15 @@ export default function Review() {
         </div>
 
         {/* Carousel using ShadCN */}
-        <Carousel opts={{ align: "start" }} className="w-full">
+        <Carousel opts={{ align: "start" }} className="w-full ">
           <CarouselContent className="">
             {reviews.map((review: any, index: number) => (
               <CarouselItem
                 key={index}
                 className="pl-4 md:basis-1/2 lg:basis-1/3"
               >
-                <div className="h-full hover:bg-gray-100 p-5 pt-0">
-                  <div className="w-20 h-20 rounded-full bg-forest-green flex items-center justify-center mx-auto mb-5">
+                <div className="h-full hover:bg-gray-100 p-4 relative">
+                  <div className="w-20 h-20 rounded-full bg-golden flex items-center justify-center mx-auto my-2 ">
                     {review.image ? (
                       <img
                         src={review.image}
@@ -83,7 +83,7 @@ export default function Review() {
                     <h4 className="font-medium text-gray-900 text-base text-center">
                       {review.name}
                     </h4>
-                    <p className="text-sm text-gray-500 text-center my-3">
+                    <p className="text-sm text-gray-500 text-center my-2">
                       {review.designation}
                     </p>
                   </div>

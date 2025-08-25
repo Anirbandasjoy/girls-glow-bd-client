@@ -16,7 +16,7 @@ export function ShopBreadcrumb() {
             <BreadcrumbItem>
               <BreadcrumbLink
                 href="/"
-                className="text-lg font-medium text-[#0E243A] hover:text-white hover:underline"
+                className="text-lg font-medium text-[#0E243A] hover:text-white hover:underline" 
               >
                 Home
               </BreadcrumbLink>

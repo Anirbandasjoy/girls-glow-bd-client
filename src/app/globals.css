@@ -31,6 +31,15 @@ html {
 }
 
 @font-face {
+  font-family: 'BellMT';
+  src: url('@/../../components/fonts/bell-mt.ttf') format('truetype');
+}
+
+.bellmt-font {
+  font-family: 'BellMT', serif !important;
+}
+
+@font-face {
   font-family: 'SolaimanLipi';
   src: url('@/../../components/fonts/SolaimanLipi.ttf') format('truetype');
 }
@@ -39,10 +48,7 @@ html {
   font-family: 'Siyamrupali';
   src: url('@/../../components/fonts/Siyamrupali.ttf') format('truetype');
 }
-@font-face {
-  font-family: 'BellMT';
-  src: url('@/../../components/fonts/BellMT.ttf') format('truetype');
-}
+
 
 
 @theme{
