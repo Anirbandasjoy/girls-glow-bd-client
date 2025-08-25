@@ -73,12 +73,12 @@ export default function ShopPage() {
       <div className="px-[5%] bg-white h-full">
         <div className="pt-10 pb-20 max-w-screen-xl mx-auto">
           <div
-            className="mb-5 font-medium text-forest-green flex gap-2 items-center  sm:hidden"
+            className="mb-5 font-medium text-midnight-navy flex gap-2 items-center  sm:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             Filter
             <FaAngleRight
-              className={`text-forest-green mt-1 text-xl transform duration-300 ${isOpen ? "rotate-90" : "rotate-0"
+              className={`text-midnight-navy mt-1 text-xl transform duration-300 ${isOpen ? "rotate-90" : "rotate-0"
                 }`}
             />
           </div>

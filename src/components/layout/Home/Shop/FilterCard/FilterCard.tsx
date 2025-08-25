@@ -187,8 +187,8 @@ const FilterCard: React.FC<FilterCardProps> = ({
           </RadioGroup>
         </div>
         <div className="bg-white p-5 space-y-5 rounded">
-          <h1 className="flex justify-between items-center gap-5 text-forest-green text-xl font-medium ">
-            Price Range <FaAngleRight className="text-forest-green" />
+          <h1 className="flex justify-between items-center gap-5 text-midnight-navy text-xl font-medium ">
+            Price Range <FaAngleRight className="text-midnight-navy" />
           </h1>
           <div className="w-full h-px bg-[#C4C4C4]"></div>
           <div className="space-y-2">

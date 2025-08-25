@@ -77,7 +77,7 @@ export default function ProductCard({ product }: any) {
   return (
     <div className="group relative" key={product?._id}>
       {/* Product Image Container */}
-      <div className="relative w-full h-64 sm:h-72 overflow-hidden">
+      <div className="relative w-full h-72 overflow-hidden">
         <Image
           width={400}
           height={400}
@@ -113,22 +113,18 @@ export default function ProductCard({ product }: any) {
       </div>
 
       {/* Product Content */}
-      <div className="flex flex-col flex-grow p-5 space-y-2">
+      <div className="flex flex-col flex-grow p-5 lg:space-y-2">
         {/* Product Title */}
         <div
-          className="min-h-[3rem] flex items-start"
+          className="flex items-start mb-2.5"
         >
           <h1
             className="hidden sm:block text-lg font-medium text-gray-900 leading-tight  group-hover:text-golden transition-colors duration-200"
             dangerouslySetInnerHTML={{ __html: product?.productName }}
           />
           <h1
-            className="block sm:hidden text-base font-bold text-gray-900 leading-tight  transition-colors duration-200"
-            dangerouslySetInnerHTML={{
-              __html:
-                product?.productName?.split(" ").slice(0, 3).join(" ") +
-                (product?.productName?.split(" ").length > 3 ? "..." : ""),
-            }}
+            className="block sm:hidden text-lg font-medium text-gray-900   transition-colors duration-200"
+           dangerouslySetInnerHTML={{ __html: product?.productName }}
           />
         </div>
 
