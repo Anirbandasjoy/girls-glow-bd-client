@@ -13,6 +13,7 @@ import { FaMinus, FaPlus, FaWhatsapp } from "react-icons/fa";
 
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
@@ -26,9 +27,10 @@ import { useHandleAddOrderMutation } from "@/redux/features/order/orderApi";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { CheckCircle, User } from "lucide-react";
+import { GoDot, GoDotFill } from "react-icons/go";
 
 type ShippingOption = "dhakaCity" | "dhakaCityOuter" | "outsideDhaka";
 type PaymentOption = "cash" | "bkash";
@@ -120,6 +122,7 @@ const ShopDetails = ({ slug }: any) => {
   // Extracting the data list and total pages from the response
   const allData2: IData[] = data2?.payload || [];
   const allData = allData2.filter((item) => item?.slug !== slug);
+
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
@@ -222,11 +225,35 @@ const ShopDetails = ({ slug }: any) => {
   //   );
   // };
 
+
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!api) {
+      return
+    }
+    console.log(api)
+
+    setCount(api.scrollSnapList().length)
+
+    setCurrent(api.selectedScrollSnap() + 1)
+
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+    console.log(count)
+    console.log(current)
+  }, [api, count, current])
+
+
+
   return (
     <>
       <div
         className="min-h-screen scroll-smooth "
-        style={{ fontFamily: "SolaimanLipi" }}
       >
         <div className="">
           <div className="">
@@ -255,7 +282,7 @@ const ShopDetails = ({ slug }: any) => {
                 <h1 className="text-xl">
                   Discount Price : <span className="">৳ {price} BDT</span>
                 </h1>
-                          
+
                 <Link
                   href="#orderSection"
                   className="block mx-auto my-3 rounded-none bg-[#E6C200] font-light py-3 px-5 cursor-pointer text-center w-fit"
@@ -276,7 +303,9 @@ const ShopDetails = ({ slug }: any) => {
             </div>
             <div className="bg-white px-[5%]">
               <div className="max-w-screen-lg mx-auto py-10 ">
-                <h1 className="text-2xl sm:text-3xl lg:text-[40px] ">
+                <h1 className="text-2xl sm:text-3xl lg:text-[40px] bellmt-font" style={{
+                  fontFamily: 'BellMT',
+                }}>
                   Product Details
                 </h1>
                 <hr className="my-5" />
@@ -286,7 +315,7 @@ const ShopDetails = ({ slug }: any) => {
                 ></p>
               </div>
               <div className="max-w-screen-lg mx-auto py-10 ">
-                <h1 className="text-2xl sm:text-3xl lg:text-[40px] ">
+                <h1 className="text-2xl sm:text-3xl lg:text-[40px] bellmt-font">
                   Specialty
                 </h1>
                 <hr className="my-5" />
@@ -302,7 +331,7 @@ const ShopDetails = ({ slug }: any) => {
                   );
                 })}
               </div>
-              <div className="max-w-screen-xl mx-auto bg-[#F5F5F5] py-10">
+              <div className="max-w-screen-xl mx-auto bg-[#F5F5F5] py-10 ] relative">
                 <div className="text-center mb-16">
                   <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl text-[#1A1A1A] font-caladea my-4">
@@ -310,76 +339,88 @@ const ShopDetails = ({ slug }: any) => {
                   </h1>
                   <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
                 </div>
-                <Carousel>
+                <Carousel setApi={setApi}>
                   <CarouselContent className="max-w-screen-lg mx-auto">
                     {isLoading
                       ? // Show 3 skeleton cards as placeholders
-                        Array.from({ length: 3 }).map((_, index) => (
-                          <CarouselItem
-                            key={index}
-                            className="md:basis-1/2 lg:basis-1/3 h-full"
-                          >
-                            <div className="bg-white p-5 rounded h-full flex flex-col animate-pulse space-y-5">
-                              {/* Placeholder for review content */}
-                              <div className="flex-1 space-y-2">
-                                <div className="h-3 w-full bg-gray-200 rounded" />
-                                <div className="h-3 w-full bg-gray-200 rounded" />
-                                <div className="h-3 w-full bg-gray-200 rounded" />
-                                <div className="h-3 w-5/6 bg-gray-200 rounded" />
-                              </div>
+                      Array.from({ length: 3 }).map((_, index) => (
+                        <CarouselItem
+                          key={index}
+                          className="md:basis-1/2 lg:basis-1/3 h-full"
+                        >
+                          <div className="bg-white p-5 rounded h-full flex flex-col animate-pulse space-y-5">
+                            {/* Placeholder for review content */}
+                            <div className="flex-1 space-y-2">
+                              <div className="h-3 w-full bg-gray-200 rounded" />
+                              <div className="h-3 w-full bg-gray-200 rounded" />
+                              <div className="h-3 w-full bg-gray-200 rounded" />
+                              <div className="h-3 w-5/6 bg-gray-200 rounded" />
+                            </div>
 
-                              {/* Placeholder for name and designation */}
-                              <div className="flex justify-between items-center mt-auto">
-                                <div className="space-y-2">
-                                  <div className="h-4 w-32 bg-gray-200 rounded" />{" "}
-                                  {/* Name */}
-                                  <div className="h-3 w-24 bg-gray-200 rounded" />{" "}
-                                  {/* Designation */}
-                                </div>
+                            {/* Placeholder for name and designation */}
+                            <div className="flex justify-between items-center mt-auto">
+                              <div className="space-y-2">
+                                <div className="h-4 w-32 bg-gray-200 rounded" />{" "}
+                                {/* Name */}
+                                <div className="h-3 w-24 bg-gray-200 rounded" />{" "}
+                                {/* Designation */}
                               </div>
                             </div>
-                          </CarouselItem>
-                        ))
+                          </div>
+                        </CarouselItem>
+                      ))
                       : reviews?.map((review: any, index: number) => (
-                          <CarouselItem
-                            key={index}
-                            className="md:basis-1/2 lg:basis-1/3"
-                          >
-                            <div className="bg-white mx-2 p-5 rounded h-full flex flex-col">
-                              <p className="text-sm text-[#656565] mb-5 flex-1">
-                                {review?.content}
-                              </p>
-                              <div className="flex items-center gap-5">
-                                <div className="w-10 h-10 rounded-full bg-forest-green flex items-center justify-center mx-auto mb-5">
-                                  {review.image ? (
-                                    <Image
-                                      src={review.image}
-                                      alt={review.name}
-                                      className="w-full h-full object-cover relative "
-                                    />
-                                  ) : (
-                                    <User className="text-white" size={30} />
-                                  )}
-                                </div>
+                        <CarouselItem
+                          key={index}
+                          className="md:basis-1/2 "
+                        >
+                          <div className="bg-white mx-2 p-5 rounded h-full flex flex-col">
+                            <p className="text-sm text-[#656565] mb-5 flex-1">
+                              {review?.content}
+                            </p>
+                            <div className="flex items-center gap-5">
+                              <div className="w-10 h-10 rounded-full bg-golden flex items-center justify-center mx-auto mb-5">
+                                {review.image ? (
+                                  <Image
+                                    src={review.image}
+                                    alt={review.name}
+                                    className="w-full h-full object-cover relative "
+                                  />
+                                ) : (
+                                  <User className="text-white" size={30} />
+                                )}
+                              </div>
 
-                                <div className="flex justify-between items-center gap-5 flex-1">
-                                  <div className="space-y-1">
-                                    <p className="">{review?.name}</p>
-                                    <p className="text-sm text-[#656565]">
-                                      {review?.designation}
-                                    </p>
-                                  </div>
+                              <div className="flex justify-between items-center gap-5 flex-1">
+                                <div className="space-y-1">
+                                  <p className="">{review?.name}</p>
+                                  <p className="text-sm text-[#656565]">
+                                    {review?.designation}
+                                  </p>
                                 </div>
                               </div>
                             </div>
-                          </CarouselItem>
-                        ))}
+                          </div>
+                        </CarouselItem>
+                      ))}
                   </CarouselContent>
                 </Carousel>
+                  
+                  <h1>
+                    <div className="flex absolute bottom-2 left-1/2  -translate-x-1/2">
+                      {
+                        Array.from({ length: count }).map((_, i) =>
+                          i === current - 1  ?
+                            <GoDotFill key={i} className='text-golden text-xl ml-1 ' /> : <GoDot key={i} className='text-golden text-xl  ml-2' />
+
+                        )
+                      }
+                    </div>
+                  </h1>
               </div>
-              <div className="bg-black flex justify-baseline items-center gap-5 p-5 my-16 max-w-screen-xl mx-auto">
+              <div className="bg-black flex flex-col sm:flex-row justify-baseline items-center gap-5 p-5 my-16 max-w-screen-xl mx-auto">
                 {/* টেক্সট */}
-                <p className="text-white sm:text-2xl font-bold leading-snug flex-1 text-start">
+                <p className="text-white sm:text-2xl font-medium leading-snug flex-1 text-start" style={{ fontFamily: "SolaimanLipi" }}>
                   তাই আর দেরি না করে আজই অর্ডার করুন
                   <br />
                   প্রয়োজনে হোয়াটআপ করুন - 09638570740
@@ -398,12 +439,12 @@ const ShopDetails = ({ slug }: any) => {
                   </a>
                 </p>
               </div>
-              <div className="relative  max-w-screen-xl mx-auto">
+              <div className="relative  max-w-screen-xl mx-auto bg-[#F5F5F5] pt-10">
                 {/* contact number */}
-                <div className="absolute w-full flex flex-col items-center pt-10 h-[350px] bg-[#F5F5F5] rounded-lg">
+                <div className="absolute w-full flex flex-col items-center rounded-lg">
                   <a
                     href="tel:01342106348"
-                    className="text-xl font-medium  block text-center "
+                    className="text-xl font-medium  block text-center " style={{ fontFamily: "SolaimanLipi" }}
                   >
                     প্রয়োজনে কল করুন: 09638-570740
                   </a>
@@ -411,10 +452,10 @@ const ShopDetails = ({ slug }: any) => {
                     “
                     <span
                       dangerouslySetInnerHTML={{ __html: productName }}
-                      className=""
+                      className="" style={{ fontFamily: "SolaimanLipi" }}
                     />
                     ”{" "}
-                    <span className="#656565">
+                    <span className="#656565" style={{ fontFamily: "SolaimanLipi" }}>
                       নিতে নিচের ফর্মটি পূরণ করুন এবং অর্ডার নিশ্চিত করুন
                     </span>
                   </p>
@@ -423,7 +464,8 @@ const ShopDetails = ({ slug }: any) => {
                 <form
                   id="orderSection"
                   onSubmit={handleSubmit(onSubmit)}
-                  className="relative z-50 top-36 sm:top-24 lg:top-20 flex flex-col lg:flex-row justify-between gap-5 px-[5%] py-10"
+                  className="relative z-50 top-36 sm:top-24 lg:top-20 flex flex-col lg:flex-row justify-between gap-5 px-[5%] py-10 bg-[#F5F5F5] "
+                  style={{ fontFamily: "SolaimanLipi" }}
                 >
                   <div className="bg-white p-5 flex-1 space-y-5 rounded-lg">
                     <h2 className="text-lg font-bold mb-4">Billing Details</h2>
@@ -769,11 +811,10 @@ const ShopDetails = ({ slug }: any) => {
                     <button
                       type="submit"
                       disabled={placeOrderLoading}
-                      className={`w-full py-2 rounded cursor-pointer ${
-                        placeOrderLoading
-                          ? "bg-gray-400 cursor-not-allowed disabled"
-                          : "bg-yellow-400 hover:bg-yellow-500"
-                      }`}
+                      className={`w-full py-2 rounded cursor-pointer ${placeOrderLoading
+                        ? "bg-gray-400 cursor-not-allowed disabled"
+                        : "bg-yellow-400 hover:bg-yellow-500"
+                        }`}
                     >
                       {placeOrderLoading ? "Place Order.." : "Place Order"}
                     </button>
@@ -781,9 +822,9 @@ const ShopDetails = ({ slug }: any) => {
                 </form>
               </div>
               <div className="pt-36 sm:py-20 max-w-screen-xl mx-auto">
-                <div className="text-center mb-16">
+                <div className="text-center my-10 lg:my-16">
                   <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl text-[#1A1A1A] font-caladea my-4">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl text-[#1A1A1A] font-caladea my-4 ">
                     More Products
                   </h1>
                   <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>

@@ -215,7 +215,7 @@ function CarouselPreviousReview({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 sm:size-10 z-50 rounded-full", 
+        "absolute size-8 sm:size-10 z-50 ", 
         orientation === "horizontal"
           ? "top-1/2 -left-4 lg:-left-12 -translate-y-1/2 bg-transparent border border-black text-black hover:bg-black hover:text-white cursor-pointer"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -305,7 +305,7 @@ function CarouselNextReview({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 sm:size-10 rounded-full z-50",
+        "absolute size-8 sm:size-10 z-50",
         orientation === "horizontal"
           ? "top-1/2 -right-4 lg:-right-12 -translate-y-1/2 bg-transparent border border-black  text-black hover:bg-black hover:text-white cursor-pointer"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",

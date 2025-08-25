@@ -77,7 +77,7 @@ export default function ProductCard({ product }: any) {
   return (
     <div className="group relative" key={product?._id}>
       {/* Product Image Container */}
-      <div className="relative w-full h-56 sm:h-64 overflow-hidden">
+      <div className="relative w-full h-64 sm:h-72 overflow-hidden">
         <Image
           width={400}
           height={400}
@@ -93,7 +93,7 @@ export default function ProductCard({ product }: any) {
         bg-gradient-to-b from-[rgba(26,26,26,0)] from-[54.06%] to-[rgba(26,26,26,0.8)] to-100%
         lg:opacity-0 lg:invisible
         lg:group-hover:opacity-100 lg:group-hover:visible
-        transition-all duration-300
+        transition-all duration-500
       "
         >
           <div className="absolute bottom-0 left-0 right-0 space-y-2 p-5">
@@ -113,18 +113,17 @@ export default function ProductCard({ product }: any) {
       </div>
 
       {/* Product Content */}
-      <div className="flex flex-col flex-grow p-5 space-y-4">
+      <div className="flex flex-col flex-grow p-5 space-y-2">
         {/* Product Title */}
         <div
           className="min-h-[3rem] flex items-start"
-          style={{ fontFamily: "SolaimanLipi" }}
         >
           <h1
-            className="hidden sm:block text-xl font-bold text-gray-900 leading-tight line-clamp-2 group-hover:text-deepGreen transition-colors duration-200"
+            className="hidden sm:block text-lg font-medium text-gray-900 leading-tight  group-hover:text-golden transition-colors duration-200"
             dangerouslySetInnerHTML={{ __html: product?.productName }}
           />
           <h1
-            className="block sm:hidden text-base font-bold text-gray-900 leading-tight line-clamp-2 group-hover:text-deepGreen transition-colors duration-200"
+            className="block sm:hidden text-base font-bold text-gray-900 leading-tight  transition-colors duration-200"
             dangerouslySetInnerHTML={{
               __html:
                 product?.productName?.split(" ").slice(0, 3).join(" ") +
