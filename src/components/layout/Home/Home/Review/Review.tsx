@@ -56,7 +56,7 @@ export default function Review() {
         <div className="text-center mb-12 overflow-hidden">
           <div className="w-[500px] h-[1px] bg-gray-400 mx-auto"></div>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 my-4">
-            What our customer said
+            কাস্টমারদের রিভিউ সমূহ
           </h1>
           <div className="w-[500px] h-[1px] bg-gray-400 mx-auto"></div>
         </div>

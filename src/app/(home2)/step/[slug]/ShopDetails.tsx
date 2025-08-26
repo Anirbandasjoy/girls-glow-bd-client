@@ -336,8 +336,8 @@ const ShopDetails = ({ slug }: any) => {
               <div className="max-w-screen-xl mx-auto bg-[#F5F5F5] py-10 ] relative">
                 <div className="text-center mb-16">
                   <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl text-[#1A1A1A] font-caladea my-4">
-                    Customer’s Review
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl text-midnight-navy my-4 font-bold" style={{ fontFamily: "SolaimanLipi" }}>
+                    কাস্টমারদের রিভিউ 
                   </h1>
                   <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
                 </div>
