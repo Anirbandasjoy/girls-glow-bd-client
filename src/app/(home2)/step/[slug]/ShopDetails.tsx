@@ -31,6 +31,7 @@ import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { CheckCircle, User } from "lucide-react";
 import { GoDot, GoDotFill } from "react-icons/go";
+import { PiQuotesDuotone } from "react-icons/pi";
 
 type ShippingOption = "dhakaCity" | "dhakaCityOuter" | "outsideDhaka";
 type PaymentOption = "cash" | "bkash";
@@ -258,10 +259,11 @@ const ShopDetails = ({ slug }: any) => {
         <div className="">
           <div className="">
             <div className="px-[5%]">
-              <div className=" text-center space-y-3 rounded-lg max-w-screen-lg mx-auto pt-10 ">
+              <div className=" text-center space-y-2 rounded-lg max-w-screen-lg mx-auto pt-10 ">
                 <p
                   id="order-form"
-                  className="text-2xl space-y-2 gap-2 sm:text-3xl lg:text-4xl font-medium text-center py-2 max-w-72 sm:max-w-lg lg:max-w-full leading-relaxed mx-auto"
+                  className="text-3xl space-y-2 gap-2 sm:text-4xl lg:text-5xl font-medium text-center py-2 max-w-72 sm:max-w-lg lg:max-w-full leading-relaxed mx-auto bellmt-font"
+                  style={{ fontFamily: "BellMT" }}
                 >
                   <span
                     className=""
@@ -276,7 +278,7 @@ const ShopDetails = ({ slug }: any) => {
                     __html: unit,
                   }}
                 ></h1>
-                <h1 className="text-[#656565]">
+                <h1 className="text-base text-[#656565]">
                   Regular Price : ৳ {prvPrice} BDT
                 </h1>
                 <h1 className="text-xl">
@@ -285,7 +287,7 @@ const ShopDetails = ({ slug }: any) => {
 
                 <Link
                   href="#orderSection"
-                  className="block mx-auto my-3 rounded-none bg-[#E6C200] font-light py-3 px-5 cursor-pointer text-center w-fit"
+                  className="block mx-auto my-3 rounded-none bg-[#E6C200] font-medium py-2.5 px-5 cursor-pointer text-center w-fit"
                 >
                   Order Now
                 </Link>
@@ -372,16 +374,19 @@ const ShopDetails = ({ slug }: any) => {
                       : reviews?.map((review: any, index: number) => (
                         <CarouselItem
                           key={index}
+                          
                           className="md:basis-1/2 "
                         >
                           <div className="bg-white mx-2 p-5 rounded h-full flex flex-col">
                             <p className="text-sm text-[#656565] mb-5 flex-1">
                               {review?.content}
                             </p>
-                            <div className="flex items-center gap-5">
-                              <div className="w-10 h-10 rounded-full bg-golden flex items-center justify-center mx-auto mb-5">
+                            <div className="flex items-center gap-3 ">
+                              <div className="w-12 h-12 rounded-full bg-golden flex items-center justify-center mx-auto ">
                                 {review.image ? (
                                   <Image
+                                    width={40}
+                                    height={40}
                                     src={review.image}
                                     alt={review.name}
                                     className="w-full h-full object-cover relative "
@@ -391,12 +396,15 @@ const ShopDetails = ({ slug }: any) => {
                                 )}
                               </div>
 
-                              <div className="flex justify-between items-center gap-5 flex-1">
-                                <div className="space-y-1">
+                              <div className="flex justify-between items-center gap-2 flex-1">
+                                <div className="">
                                   <p className="">{review?.name}</p>
                                   <p className="text-sm text-[#656565]">
                                     {review?.designation}
                                   </p>
+                                </div>
+                                <div className="">
+                                  <PiQuotesDuotone className="text-6xl text-golden" />
                                 </div>
                               </div>
                             </div>
@@ -405,18 +413,16 @@ const ShopDetails = ({ slug }: any) => {
                       ))}
                   </CarouselContent>
                 </Carousel>
-                  
-                  <h1>
-                    <div className="flex absolute bottom-2 left-1/2  -translate-x-1/2">
-                      {
-                        Array.from({ length: count }).map((_, i) =>
-                          i === current - 1  ?
-                            <GoDotFill key={i} className='text-golden text-xl ml-1 ' /> : <GoDot key={i} className='text-golden text-xl  ml-2' />
 
-                        )
-                      }
-                    </div>
-                  </h1>
+                <div className="flex absolute bottom-2 left-1/2  -translate-x-1/2">
+                  {
+                    Array.from({ length: count }).map((_, i) =>
+                      i === current - 1 ?
+                        <GoDotFill key={i} className='text-golden text-xl ml-1 ' /> : <GoDot key={i} className='text-golden text-xl  ml-2' />
+
+                    )
+                  }
+                </div>
               </div>
               <div className="bg-black flex flex-col sm:flex-row justify-baseline items-center gap-5 p-5 my-16 max-w-screen-xl mx-auto">
                 {/* টেক্সট */}
@@ -468,7 +474,7 @@ const ShopDetails = ({ slug }: any) => {
                   style={{ fontFamily: "SolaimanLipi" }}
                 >
                   <div className="bg-white p-5 flex-1 space-y-5 rounded-lg">
-                    <h2 className="text-lg font-bold mb-4">Billing Details</h2>
+                    <h2 className="text-lg font-medium mb-4">Billing Details</h2>
                     <div className="space-y-4">
                       <div>
                         <label className=" font-medium text-sm ">
@@ -529,7 +535,7 @@ const ShopDetails = ({ slug }: any) => {
                     </div>
                   </div>
                   <div className="bg-white p-5 flex-1 rounded-lg">
-                    <h2 className="text-lg font-bold mb-4">Your Order</h2>
+                    <h2 className="text-lg font-medium mb-4">Your Order</h2>
                     <div className="pt-2">
                       <Table className="hidden sm:block">
                         <TableHeader>

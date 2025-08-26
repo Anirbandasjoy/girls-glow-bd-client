@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import {User } from "lucide-react";
+import { User } from "lucide-react";
 import { useHandleGetAllReviewQuery } from "@/redux/features/review/reviewApi";
 import {
   Carousel,
@@ -11,6 +11,8 @@ import {
   CarouselNextReview,
   CarouselPreviousReview,
 } from "@/components/ui/carousel";
+import Image from "next/image";
+import { PiQuotesDuotone } from "react-icons/pi";
 
 // const StarRating = ({ rating }: { rating: number }) => {
 //   return (
@@ -67,39 +69,44 @@ export default function Review() {
                 key={index}
                 className="pl-4 md:basis-1/2 lg:basis-1/3"
               >
-                <div className="h-full hover:bg-gray-100 p-4 relative">
-                  <div className="w-20 h-20 rounded-full bg-golden flex items-center justify-center mx-auto my-2 ">
-                    {review.image ? (
-                      <img
-                        src={review.image}
-                        alt={review.name}
-                        className="w-full h-full object-cover relative "
-                      />
-                    ) : (
-                      <User className="text-white" size={30} />
-                    )}
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 text-base text-center">
-                      {review.name}
-                    </h4>
-                    <p className="text-sm text-gray-500 text-center my-2">
-                      {review.designation}
-                    </p>
-                  </div>
-                  {/* <div className="flex justify-between mb-4">
-                    <StarRating rating={review.rating} />
-                  </div> */}
-                  <p className="text-gray-700 text-sm mb-6">
-                    &quot;{review.content}&quot;
+                <div className="bg-white mx-2 p-5 rounded h-full flex flex-col">
+                  <p className="text-sm text-[#656565] mb-5 flex-1">
+                    {review?.content}
                   </p>
+                  <div className="flex items-center gap-3 ">
+                    <div className="w-12 h-12 rounded-full bg-golden flex items-center justify-center mx-auto ">
+                      {review.image ? (
+                        <Image
+                          width={40}
+                          height={40}
+                          src={review.image}
+                          alt={review.name}
+                          className="w-full h-full object-cover relative "
+                        />
+                      ) : (
+                        <User className="text-white" size={30} />
+                      )}
+                    </div>
+
+                    <div className="flex justify-between items-center gap-2 flex-1">
+                      <div className="">
+                        <p className="">{review?.name}</p>
+                        <p className="text-sm text-[#656565]">
+                          {review?.designation}
+                        </p>
+                      </div>
+                      <div className="">
+                        <PiQuotesDuotone className="text-6xl text-golden"/>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
           <div className="flex justify-center gap-4 mt-8">
-            <CarouselPreviousReview/>
-            <CarouselNextReview/>
+            <CarouselPreviousReview />
+            <CarouselNextReview />
           </div>
         </Carousel>
       </div>

@@ -1,3 +1,4 @@
+
 import toast from "react-hot-toast";
 
 const uploadImageToImageBB = async (
@@ -52,9 +53,9 @@ const uploadImageToImageBB = async (
       }
     );
 
-    const data = await response.json();
-    if (data.success) {
-      return data.data.url;
+    const data = await response?.json();
+    if (data?.success) {
+      return data?.data.url;
     } else {
       throw new Error("Image upload failed");
     }
