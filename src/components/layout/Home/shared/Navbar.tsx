@@ -102,9 +102,12 @@ const Navbar = ({ className }: { className: string }) => {
               <p className="flex items-center gap-1 text-sm sm:text-base">
                 <MdEmail size={18} /> support@domain.com
               </p>
-              <p className="flex items-center gap-1 text-sm sm:text-base">
-                <Phone size={18} /> 01877726999
-              </p>
+              <a
+                href="tel:+8801877726999"
+                className="flex items-center gap-1 text-sm sm:text-base hover:text-green-600 transition"
+              >
+                <Phone size={18} /> +8801877726999
+              </a>
             </div>
           </Marquee>
         </div>
@@ -157,7 +160,7 @@ const Navbar = ({ className }: { className: string }) => {
                           href={`/step/${product.slug}`}
                           className="flex items-center gap-3 p-3 hover:bg-gray-100 transition"
                         >
-                          <div className="w-14 h-14 relative rounded overflow-hidden border">
+                          <div className="w-14 h-10 relative rounded overflow-hidden border">
                             <Image
                               src={product.productImage}
                               alt={product.productName}
@@ -236,9 +239,8 @@ const Navbar = ({ className }: { className: string }) => {
         {/* Mobile Menu Overlay */}
 
         <div
-          className={`fixed top-0 left-0 w-full flex flex-col gap-4   bg-white/30 backdrop-blur-sm pt-32 pb-5 z-30 px-[5%] transform duration-700 lg:hidden shadow ${
-            isOpen ? "translate-y-0" : "-translate-y-full"
-          }`}
+          className={`fixed top-0 left-0 w-full flex flex-col gap-4   bg-white/30 backdrop-blur-sm pt-32 pb-5 z-30 px-[5%] transform duration-700 lg:hidden shadow ${isOpen ? "translate-y-0" : "-translate-y-full"
+            }`}
         >
           <div className="space-y-6 text-lg flex flex-col font-medium">
             <Link onClick={() => setIsOpen(false)} href="/">

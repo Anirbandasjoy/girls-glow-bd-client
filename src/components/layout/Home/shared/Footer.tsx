@@ -91,11 +91,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t pt-6 text-center text-sm text-gray-500">
+        <div className="flex justify-between border-t pt-6 text-center text-sm text-gray-500">
           © {new Date().getFullYear()} Girl's glowBD. All rights reserved.
-          <br />
-          <br />
-          <span>Made By <a target="_blank" href="http://qrinux.com">Qrinux Inc</a></span>
+          <span>Designed and Developed By <a target="_blank" href="http://qrinux.com">Qrinux Inc.</a></span>
         </div>
       </div>
     </footer>

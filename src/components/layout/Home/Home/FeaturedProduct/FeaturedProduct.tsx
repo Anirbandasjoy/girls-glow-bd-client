@@ -110,7 +110,7 @@ export default function FeaturedProduct() {
         <div className="flex justify-center items-center">
           <Link
             href="/shop"
-            className="text-black bg-[#E6C200] px-5 py-2 cursor-pointer w-fit mx-auto hover:bg-[#c7a700] transition-colors duration-300"
+            className="text-black font-medium bg-[#E6C200] px-5 py-2 cursor-pointer w-fit mx-auto hover:bg-[#c7a700] transition-colors duration-300"
           >
             Explore All
           </Link>

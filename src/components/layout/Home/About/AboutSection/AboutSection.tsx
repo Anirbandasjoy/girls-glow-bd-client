@@ -2,21 +2,11 @@
 import Image from "next/image";
 import React from "react";
 import aboutImage from "@/../public/about.png";
-import { useHandleFindTeamQuery } from "@/redux/features/team/teamApi";
 
-interface IData {
-  _id: string; // Unique data ID from MongoDB
-  name: string;
-  image: string;
-  designation: string;
-  slug: string;
-  createdAt: string; // ISO date string when the data was created
-  updatedAt: string; // ISO date string when the data was last updated
-}
 export default function AboutSection() {
-  const { data } = useHandleFindTeamQuery({});
+  // const { data } = useHandleFindTeamQuery({});
   // Extracting the data list and total pages from the response
-  const allData: IData[] = data?.payload || [];
+  // const allData: IData[] = data?.payload || [];
   return (
     <div className="px-[5%] bg-white pb-20">
       <div className="max-w-screen-xl mx-auto  py-10 lg:py-14">
@@ -27,7 +17,7 @@ export default function AboutSection() {
           src={aboutImage}
           className="w-full h-fit mb-10 max-w-screen-lg mx-auto"
         />
-        <h1 className="text-xl sm:text-2xl lg:text-3xl text-center">
+        <h1 className="text-xl sm:text-3xl lg:text-4xl text-start" style={{ fontFamily: "BellMT" }}>
           About Us
         </h1>
         <hr className="my-6 border-t border-gray-300" />
@@ -55,7 +45,7 @@ export default function AboutSection() {
           culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
           dolor sit amet, consectetur adipiscing{" "}
         </p>
-        <h1 className="text-xl sm:text-2xl lg:text-3xl text-center mt-10">
+        {/* <h1 className="text-xl sm:text-2xl lg:text-3xl text-center mt-10">
           Our People
         </h1>
         <hr className="my-6 border-t border-gray-300" />
@@ -73,7 +63,7 @@ export default function AboutSection() {
               <p className="text-gray-600">{item.designation}</p>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
