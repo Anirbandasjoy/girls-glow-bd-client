@@ -287,9 +287,9 @@ const ShopDetails = ({ slug }: any) => {
 
                 <Link
                   href="#orderSection"
-                  className="block mx-auto my-3 rounded-none bg-[#E6C200] font-medium py-2.5 px-5 cursor-pointer text-center w-fit"
+                  className="block mx-auto my-3 rounded-none text-2xl bg-[#E6C200] font-medium py-2.5 px-5 cursor-pointer text-center w-fit" style={{ fontFamily: "SolaimanLipi" }}
                 >
-                  Order Now
+                  অর্ডার করুন
                 </Link>
               </div>
             </div>
