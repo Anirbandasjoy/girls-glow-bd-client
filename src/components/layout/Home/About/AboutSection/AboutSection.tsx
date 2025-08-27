@@ -22,28 +22,9 @@ export default function AboutSection() {
         </h1>
         <hr className="my-6 border-t border-gray-300" />
         <p className="text-[#656565] text-start">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-          <br /> <br />
-          dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          <br /> <br />
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-          dolor sit amet, consectetur adipiscing{" "}
+          Girls Glow BD is Bangladesh’s premier destination for exquisite ornaments and jewelry, designed to celebrate every woman’s individuality and elegance. Our journey began with a passion for blending timeless artistry with contemporary fashion, offering a diverse collection that suits both everyday moments and life’s special occasions. Each piece is thoughtfully curated for quality, affordability, and style, ensuring you find something that truly resonates with your personality.
+          <br /><br />
+          We believe that jewelry is more than just an accessory—it’s a reflection of your story and spirit. That’s why our team is committed to providing a seamless shopping experience, from easy browsing to fast delivery and attentive customer support. Whether you’re gifting a loved one or treating yourself, Girls Glow BD is here to help you shine brighter every day. Join our community and discover the glow within!
         </p>
         {/* <h1 className="text-xl sm:text-2xl lg:text-3xl text-center mt-10">
           Our People

@@ -53,8 +53,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Premium Lungi BD",
-  description: "Premium Lungi BD official website",
+  title: "Girl's Glow BD",
+  description: "Girl's Glow BD official website",
 };
 
 export default function RootLayout({
