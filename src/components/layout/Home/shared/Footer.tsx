@@ -60,18 +60,18 @@ export default function Footer() {
               <div className="flex items-center gap-3">
         
                 <Phone className="w-4 h-4"/>
-                <a href="tel:+3104372766" className="hover:text-[#E6C200]">
-                  +310-437-2766
+                <a href="tel:+8801877726999" className="hover:text-[#E6C200]">
+                  +8801877726999
                 </a>
               </div>
 
               <div className="flex items-center gap-3">
        <Mail className="w-4 h-4"/>
                 <a
-                  href="mailto:unreal@outlook.com"
+                  href="mailto:info@girlsglowbd.com"
                   className="hover:text-[#E6C200]"
                 >
-                  unreal@outlook.com
+                  info@girlsglowbd.com
                 </a>
               </div>
 
@@ -83,7 +83,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-[#E6C200] leading-relaxed"
                 >
-                  706 Campfire Ave. Meriden, CT 06450
+                 kodomtoli, Keraniganj lion market
                 </a>
               </div>
             </div>

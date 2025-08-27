@@ -86,7 +86,7 @@ const Navbar = ({ className }: { className: string }) => {
           {/* Right side contact info */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center">
             <p className="flex items-center gap-1 text-sm sm:text-base">
-              <MdEmail size={18} /> support@domain.com
+              <MdEmail size={18} /> info@girlsglowbd.com
             </p>
             <p className="flex items-center gap-1 text-sm sm:text-base">
               <Phone size={18} /> 01877726999
@@ -100,7 +100,7 @@ const Navbar = ({ className }: { className: string }) => {
                 Call us or send message on What’s app for order
               </h1>
               <p className="flex items-center gap-1 text-sm sm:text-base">
-                <MdEmail size={18} /> support@domain.com
+                <MdEmail size={18} /> info@girlsglowbd.com
               </p>
               <a
                 href="tel:+8801877726999"
