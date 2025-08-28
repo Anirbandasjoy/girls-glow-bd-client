@@ -43,12 +43,12 @@ export default function Banner() {
   }, [api, count, current])
 
   return (
-    <div className="sm:px-[5%] mb-20 sm:mb-10 ">
+    <div className="sm:px-[5%] mb-20 sm:mb-10 relative z-50">
       <Carousel
         plugins={[plugin.current]}
         opts={{ loop: true }}
         setApi={setApi}
-        className="max-w-screen-xl mx-auto pb-10 w-full h-[150px] sm:h-[300px] lg:h-[500px] relative"
+        className="max-w-screen-xl mx-auto pb-10 w-full h-[150px] sm:h-[300px] lg:h-[500px] relative z-50"
       >
         <CarouselContent>
           {isLoading ? (
@@ -72,7 +72,7 @@ export default function Banner() {
         {/* <CarouselPrevious2 />
         <CarouselNext2 /> */}
       </Carousel>
-      <div className="flex absolute bottom-2 left-1/2  -translate-x-1/2">
+      <div className="flex absolute -bottom-10 left-1/2 -translate-x-1/2">
         {
           Array.from({ length: count }).map((_, i) =>
             i === current - 1 ?
