@@ -429,7 +429,7 @@ const ShopDetails = ({ slug }: any) => {
                 <p className="text-white sm:text-2xl font-medium leading-snug flex-1 text-start" style={{ fontFamily: "SolaimanLipi" }}>
                   তাই আর দেরি না করে আজই অর্ডার করুন
                   <br />
-                  প্রয়োজনে হোয়াটআপ করুন -+880 1877-726999
+                  প্রয়োজনে হোয়াটআপ করুন +880 1877-726999
                 </p>
 
                 {/* হোয়াটসঅ্যাপ বাটন */}
@@ -452,7 +452,7 @@ const ShopDetails = ({ slug }: any) => {
                     href="tel:01342106348"
                     className="text-xl font-medium  block text-center " style={{ fontFamily: "SolaimanLipi" }}
                   >
-                    প্রয়োজনে কল করুন: 09638-570740
+                    প্রয়োজনে কল করুন: +880 1877-726999
                   </a>
                   <p className="flex text-xl">
                     “
