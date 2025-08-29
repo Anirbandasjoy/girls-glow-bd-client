@@ -429,13 +429,13 @@ const ShopDetails = ({ slug }: any) => {
                 <p className="text-white sm:text-2xl font-medium leading-snug flex-1 text-start" style={{ fontFamily: "SolaimanLipi" }}>
                   তাই আর দেরি না করে আজই অর্ডার করুন
                   <br />
-                  প্রয়োজনে হোয়াটআপ করুন - 09638570740
+                  প্রয়োজনে হোয়াটআপ করুন -+880 1877-726999
                 </p>
 
                 {/* হোয়াটসঅ্যাপ বাটন */}
                 <p>
                   <a
-                    href="https://wa.me/+09638570740"
+                    href="https://wa.me/+8801877726999"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

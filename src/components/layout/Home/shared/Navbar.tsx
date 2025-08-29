@@ -89,7 +89,7 @@ const Navbar = ({ className }: { className: string }) => {
               <MdEmail size={18} /> info@girlsglowbd.com
             </p>
             <p className="flex items-center gap-1 text-sm sm:text-base">
-              <Phone size={18} /> 01877726999
+              <Phone size={18} /> +880 1877-726999
             </p>
           </div>
         </div>

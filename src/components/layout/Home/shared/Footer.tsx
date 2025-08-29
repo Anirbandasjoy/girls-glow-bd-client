@@ -61,7 +61,7 @@ export default function Footer() {
         
                 <Phone className="w-4 h-4"/>
                 <a href="tel:+8801877726999" className="hover:text-[#E6C200]">
-                  +8801877726999
+                  +880 1877-726999
                 </a>
               </div>
 
@@ -93,7 +93,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex justify-between border-t pt-6 text-center text-sm text-gray-500">
           © {new Date().getFullYear()} Girl's glowBD. All rights reserved.
-          <span>Designed and Developed By <a target="_blank" href="http://qrinux.com">Qrinux Inc.</a></span>
+          <span>Designed and Developed By <a target="_blank" className="font-medium" href="http://qrinux.com">Qrinux Inc.</a></span>
         </div>
       </div>
     </footer>
