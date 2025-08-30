@@ -16,7 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { FiDownload } from "react-icons/fi";
-
+import ReactPixel from "react-facebook-pixel";
 // Utility function to strip HTML tags
 // function stripHtmlTags(str: string) {
 //   if (!str) return "";
@@ -40,6 +40,28 @@ export default function ShopCart() {
   const { data } = useHandleFindSingleOrderQuery(Id, { skip: !Id });
 
   const products = data?.payload?.products;
+  console.log(products);
+  const { _id, productName, price } =
+    products && products.length > 0 ? products[0].product : {};
+  useEffect(() => {
+    const storedData = localStorage.getItem("orderData");
+    if (!storedData) return;
+
+    const parsed = JSON.parse(storedData);
+    const customer = parsed.payload?.user;
+
+    if (_id && productName && price) {
+      ReactPixel.track("ViewContent", {
+        content_ids: [_id],
+        content_name: productName,
+        content_type: "product",
+        value: price,
+        currency: "BDT",
+        customer_name: customer?.name || "",
+        customer_phone: customer?.phone || "",
+      });
+    }
+  }, [_id, productName, price]);
 
   // useEffect(() => {
   //   if (data && products) {
