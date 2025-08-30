@@ -9,7 +9,7 @@ import {
   Montserrat,
   Caladea,
   Tiro_Bangla,
-  Inter
+  Inter,
 } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
@@ -53,8 +53,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Girl's Glow BD",
-  description: "Girl's Glow BD official website",
+  title: "Premium Lungi BD",
+  description: "Premium Lungi BD official website",
 };
 
 export default function RootLayout({
@@ -77,7 +77,7 @@ export default function RootLayout({
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '1075033951371216'); 
+              fbq('init', '1783814055829519'); 
               fbq('track', 'PageView');
             `,
           }}

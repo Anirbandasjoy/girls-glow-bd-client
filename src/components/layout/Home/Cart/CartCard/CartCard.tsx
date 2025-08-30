@@ -94,7 +94,20 @@ export default function CartCard({ cartProducts, setCartProducts }: any) {
       };
 
       const response = await handleAddOrder(payload).unwrap();
-
+      if (typeof window !== "undefined") {
+        import("react-facebook-pixel").then((ReactPixel) => {
+          ReactPixel.default.track("Purchase", {
+            value: cost, 
+            currency: "BDT",
+            contents: cartProducts.map((item: any) => ({
+              id: item.payload._id,
+              quantity: item.quantity,
+              item_price: item.payload.price,
+            })),
+            content_type: "product",
+          });
+        });
+      }
       // GA4 purchase event push
       // window.dataLayer?.push({
       //   event: "purchase",
