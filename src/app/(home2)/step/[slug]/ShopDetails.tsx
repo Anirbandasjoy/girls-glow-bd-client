@@ -443,13 +443,13 @@ const ShopDetails = ({ slug }: any) => {
                 >
                   তাই আর দেরি না করে আজই অর্ডার করুন
                   <br />
-                  প্রয়োজনে হোয়াটআপ করুন - 09638570740
+                  প্রয়োজনে হোয়াটআপ করুন -01877726999
                 </p>
 
                 {/* হোয়াটসঅ্যাপ বাটন */}
                 <p>
                   <a
-                    href="https://wa.me/+09638570740"
+                    href="https://wa.me/+01877726999"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -467,7 +467,7 @@ const ShopDetails = ({ slug }: any) => {
                     className="text-xl font-medium  block text-center "
                     style={{ fontFamily: "SolaimanLipi" }}
                   >
-                    প্রয়োজনে কল করুন: 09638-570740
+                    প্রয়োজনে কল করুন: 01877726999
                   </a>
                   <p className="flex text-xl">
                     “
