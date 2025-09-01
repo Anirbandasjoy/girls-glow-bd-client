@@ -32,7 +32,6 @@ import { Input } from "@/components/ui/input";
 import { CheckCircle, User } from "lucide-react";
 import { GoDot, GoDotFill } from "react-icons/go";
 import { PiQuotesDuotone } from "react-icons/pi";
-import ReactPixel from "react-facebook-pixel";
 type ShippingOption = "dhakaCity" | "dhakaCityOuter" | "outsideDhaka";
 type PaymentOption = "cash" | "bkash";
 
@@ -95,21 +94,33 @@ const ShopDetails = ({ slug }: any) => {
   } = data?.payload || {};
 
   useEffect(() => {
-    if (_id && productName && price) {
-      ReactPixel.track("ViewContent", {
-        content_ids: [_id],
+    if (!_id) return;
+
+    import("react-facebook-pixel").then((ReactPixel) => {
+      ReactPixel.default.track("ViewContent", {
+        content_id: _id,
         content_name: productName,
         content_type: "product",
-        value: price,
+        price,
         currency: "BDT",
+        shipping,
+        specialty,
+        prvPrice,
+        category,
+        productImage,
       });
-    }
-  }, [_id, productName, price]);
+    });
+  }, [
+    _id,
+    productName,
+    price,
+    shipping,
+    specialty,
+    prvPrice,
+    category,
+    productImage,
+  ]);
 
-  console.log({ data });
-  console.log({ specialty });
-
-  // 📝 data Interface - Defines structure for each data object
   interface IData {
     _id: string; // Unique data ID from MongoDB
     slug: string; // SEO-friendly URL slug for the data (used in URL)

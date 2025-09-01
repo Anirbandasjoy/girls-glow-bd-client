@@ -24,26 +24,26 @@ export default function ProductCard({ product }: any) {
       storedCart.push({ product: product.slug, quantity: 1 });
       localStorage.setItem("GirlglowBDCart", JSON.stringify(storedCart));
       toast.success("Added to cart");
-      // window.dataLayer?.push({
-      //   event: "add_to_cart",
-      //   ecommerce: {
-      //     currency: "BDT",
-      //     items: [
-      //       {
-      //         item_id: product?._id,
-      //         item_slug: product?.slug,
-      //         price: Number(product?.price),
-      //         item_name: stripHtmlTags(product.productName),
-      //         item_image: product?.productImage,
-      //         item_tag_line: stripHtmlTags(product?.tagline),
-      //         shipping_cost: product?.shipping,
-      //         category: product?.category,
-      //         quantity: 1,
-      //         prvPrice: product?.prvPrice,
-      //       },
-      //     ],
-      //   },
-      // });
+
+      // 🔥 Fire Facebook Pixel AddToCart event
+      if (typeof window !== "undefined") {
+        import("react-facebook-pixel").then((ReactPixel) => {
+          ReactPixel.default.track("AddToCart", {
+            content_id: product?._id,
+            content_name: product.productName,
+            content_type: "product",
+            value: Number(product.price),
+            currency: "BDT",
+            contents: [
+              {
+                id: product._id,
+                quantity: 1,
+                item_price: Number(product.price),
+              },
+            ],
+          });
+        });
+      }
     } else {
       toast.error("Already added to cart");
     }
@@ -52,27 +52,6 @@ export default function ProductCard({ product }: any) {
       window.dispatchEvent(new Event("cartUpdated"));
     }, 100);
   };
-
-  // const handleViewDetails = () => {
-  //   window.dataLayer?.push({
-  //     event: "view_item",
-  //     ecommerce: {
-  //       items: [
-  //         {
-  //           item_id: product?._id,
-  //           item_slug: product?.slug,
-  //           price: Number(product?.price),
-  //           item_name: stripHtmlTags(product.productName),
-  //           item_image: product?.productImage,
-  //           shipping_cost: product?.shipping,
-  //           category: product?.category,
-  //           quantity: product?.quantity,
-  //           prvPrice: product?.prvPrice,
-  //         },
-  //       ],
-  //     },
-  //   });
-  // };
 
   return (
     <div className="group relative" key={product?._id}>
@@ -113,18 +92,19 @@ export default function ProductCard({ product }: any) {
       </div>
 
       {/* Product Content */}
-      <Link href={`/step/${product?.slug}`} className="flex flex-col flex-grow py-5 lg:space-y-2">
+      <Link
+        href={`/step/${product?.slug}`}
+        className="flex flex-col flex-grow py-5 lg:space-y-2"
+      >
         {/* Product Title */}
-        <div 
-          className="flex items-start mb-2.5"
-        >
+        <div className="flex items-start mb-2.5">
           <h1
             className="hidden sm:block text-lg font-medium text-gray-900 leading-tight transition-colors duration-200"
             dangerouslySetInnerHTML={{ __html: product?.productName }}
           />
           <h1
             className="block sm:hidden text-lg font-medium text-gray-900   transition-colors duration-200"
-           dangerouslySetInnerHTML={{ __html: product?.productName }}
+            dangerouslySetInnerHTML={{ __html: product?.productName }}
           />
         </div>
 

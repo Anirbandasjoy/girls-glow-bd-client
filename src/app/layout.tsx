@@ -53,8 +53,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Premium Lungi BD",
-  description: "Premium Lungi BD official website",
+  title: "Girls Glow BD",
+  description: "Girls Glow BD official website",
 };
 
 export default function RootLayout({
@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Meta Pixel Code */}
+        {/* ✅ Meta Pixel Code */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -83,7 +83,7 @@ export default function RootLayout({
           }}
         />
 
-        {/*  GTM Head Script */}
+        {/* ✅ Google Tag Manager (Head) */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -103,20 +103,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${montserrat.className} ${roboto.variable} ${caladea.variable} ${tiro_bangla.variable} antialiased`}
       >
-        {/*  GTM Body noscript */}
+        {/* ✅ GTM noscript (Body) */}
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQN9P5DH" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
 
-        {/*  Meta Pixel noscript */}
+        {/* ✅ Meta Pixel noscript (Body) */}
         <noscript>
           <img
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1075033951371216&ev=PageView&noscript=1"
+            src="https://www.facebook.com/tr?id=1783814055829519&ev=PageView&noscript=1"
           />
         </noscript>
 

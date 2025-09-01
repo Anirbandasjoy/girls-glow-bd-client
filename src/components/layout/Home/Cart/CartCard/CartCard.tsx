@@ -1,7 +1,7 @@
 "use client";
 import { useHandleAddOrderMutation } from "@/redux/features/order/orderApi";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -72,6 +72,23 @@ export default function CartCard({ cartProducts, setCartProducts }: any) {
 
   const cost = productCost + (shippingCost[shippingSelected] || 0);
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && cartProducts?.length > 0) {
+      import("react-facebook-pixel").then((ReactPixel) => {
+        ReactPixel.default.track("ProceedToCheckout", {
+          value: cost,
+          currency: "BDT",
+          contents: cartProducts.map((item: any) => ({
+            id: item.payload._id,
+            quantity: item.quantity,
+            item_price: item.payload.price,
+          })),
+          content_type: "product",
+        });
+      });
+    }
+  }, [cartProducts, cost]);
+
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       const payload = {
@@ -94,40 +111,8 @@ export default function CartCard({ cartProducts, setCartProducts }: any) {
       };
 
       const response = await handleAddOrder(payload).unwrap();
-      if (typeof window !== "undefined") {
-        import("react-facebook-pixel").then((ReactPixel) => {
-          ReactPixel.default.track("Purchase", {
-            value: cost, 
-            currency: "BDT",
-            contents: cartProducts.map((item: any) => ({
-              id: item.payload._id,
-              quantity: item.quantity,
-              item_price: item.payload.price,
-            })),
-            content_type: "product",
-          });
-        });
-      }
-      // GA4 purchase event push
-      // window.dataLayer?.push({
-      //   event: "purchase",
-      //   ecommerce: {
-      //     transaction_id: response._id || response.data?._id || "", // fallback
-      //     value: cost,
-      //     currency: "BDT",
-      //     items: cartProducts.map((item: any) => ({
-      //       item_id: item.payload._id,
-      //       item_name: stripHtmlTags(item.payload.productName),
-      //       price: item.payload.price,
-      //       quantity: item.quantity,
-      //     })),
-      //   },
-      //   customer: {
-      //     name: data.name,
-      //     phone: data.phone,
-      //     address: data.address,
-      //   },
-      // });
+
+     
 
       toast.success("Order Placed Successfully!");
       // Store response in localStorage

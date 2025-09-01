@@ -16,7 +16,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { FiDownload } from "react-icons/fi";
-import ReactPixel from "react-facebook-pixel";
 // Utility function to strip HTML tags
 // function stripHtmlTags(str: string) {
 //   if (!str) return "";
@@ -28,6 +27,7 @@ export default function ShopCart() {
   const [Id, setId] = useState<string>("");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const storedData = localStorage.getItem("orderData");
     if (storedData) {
@@ -40,72 +40,35 @@ export default function ShopCart() {
   const { data } = useHandleFindSingleOrderQuery(Id, { skip: !Id });
 
   const products = data?.payload?.products;
-  console.log(products);
-  const { _id, productName, price } =
-    products && products.length > 0 ? products[0].product : {};
+
   useEffect(() => {
-    const storedData = localStorage.getItem("orderData");
-    if (!storedData) return;
+    if (typeof window === "undefined") return;
 
-    const parsed = JSON.parse(storedData);
-    const customer = parsed.payload?.user;
+    import("react-facebook-pixel").then((ReactPixel) => {
+      ReactPixel.default.init("1783814055829519");
+      ReactPixel.default.pageView();
 
-    if (_id && productName && price) {
-      ReactPixel.track("ViewContent", {
-        content_ids: [_id],
-        content_name: productName,
-        content_type: "product",
-        value: price,
-        currency: "BDT",
-        customer_name: customer?.name || "",
-        customer_phone: customer?.phone || "",
-      });
-    }
-  }, [_id, productName, price]);
+      if (response?.payload && products?.length > 0) {
+        const customer = response.payload.user;
+        const items = products.map((item: any) => ({
+          id: item.product._id,
+          name: item.product.productName,
+          price: item.price,
+          quantity: item.quantity,
+        }));
 
-  // useEffect(() => {
-  //   if (data && products) {
-  //     const items = products.map((item: any) => ({
-  //       item_id: item?.product?._id,
-  //       item_slug: item?.product?.slug,
-  //       price: Number(item?.price),
-  //       item_name: stripHtmlTags(item?.product?.productName),
-  //       item_image: item?.product?.productImage,
-  //       item_tag_line: stripHtmlTags(item?.product?.tagline),
-  //       shipping_cost: item?.product?.shipping,
-  //       unit: stripHtmlTags(item?.product?.unit),
-  //       buyingReason: {
-  //         heading: stripHtmlTags(item?.product?.buyingReason?.heading),
-  //         steps: item?.product?.buyingReason?.steps,
-  //       },
-  //       hadith: stripHtmlTags(item?.product?.hadith),
-  //       benefits: {
-  //         heading: stripHtmlTags(item?.product?.benefits?.heading),
-  //         steps: item?.product?.benefits?.steps,
-  //       },
-  //       category: item?.product?.category,
-  //       quantity: item?.quantity,
-  //       prvPrice: item?.product?.prvPrice,
-  //     }));
-
-  //     window.dataLayer?.push({
-  //       event: "purchase",
-  //       ecommerce: {
-  //         transaction_id: response?.payload?._id,
-  //         value: response?.payload?.totalAmount,
-  //         tax: 0,
-  //         shipping: response?.payload?.shippingCost,
-  //         currency: "BDT",
-  //         items: items,
-  //         userInfo: {
-  //           name: response?.payload?.user?.name || "N/A",
-  //           phone: response?.payload?.user?.phone || "N/A",
-  //           address: response?.payload?.user?.address || "N/A",
-  //         },
-  //       },
-  //     });
-  //   }
-  // }, [data, products, response]);
+        ReactPixel.default.track("Purchase", {
+          transaction_id: response.payload._id,
+          value: response.payload.totalAmount,
+          currency: "BDT",
+          shipping: response.payload.shippingCost,
+          contents: items,
+          customer_name: customer?.name || "",
+          customer_phone: customer?.phone || "",
+        });
+      }
+    });
+  }, [response, products]);
 
   const handleDownloadInvoice = async () => {
     setLoading(true);
