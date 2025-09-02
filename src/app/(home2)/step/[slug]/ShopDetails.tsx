@@ -265,9 +265,10 @@ const ShopDetails = ({ slug }: any) => {
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
-    console.log(count);
-    console.log(current);
+
   }, [api, count, current]);
+
+  
 
   return (
     <>
@@ -336,116 +337,7 @@ const ShopDetails = ({ slug }: any) => {
                   dangerouslySetInnerHTML={{ __html: description }}
                 ></p>
               </div>
-              <div className="max-w-screen-lg mx-auto py-10 ">
-                <h1 className="text-2xl sm:text-3xl lg:text-[40px] bellmt-font">
-                  Specialty
-                </h1>
-                <hr className="my-5" />
-                {specialty?.map((item: any, i: number) => {
-                  return (
-                    <p
-                      key={i}
-                      className="text-[#656565] flex items-center gap-2"
-                    >
-                      <CheckCircle size={16} />
-                      {item}
-                    </p>
-                  );
-                })}
-              </div>
-              <div className="max-w-screen-xl mx-auto bg-[#F5F5F5] py-10 ] relative">
-                <div className="text-center mb-16">
-                  <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
-                  <h1
-                    className="text-3xl sm:text-4xl lg:text-5xl text-midnight-navy my-4 font-bold"
-                    style={{ fontFamily: "SolaimanLipi" }}
-                  >
-                    কাস্টমারদের রিভিউ
-                  </h1>
-                  <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
-                </div>
-                <Carousel setApi={setApi}>
-                  <CarouselContent className="max-w-screen-lg mx-auto">
-                    {isLoading
-                      ? // Show 3 skeleton cards as placeholders
-                        Array.from({ length: 3 }).map((_, index) => (
-                          <CarouselItem
-                            key={index}
-                            className="md:basis-1/2 lg:basis-1/3 h-full"
-                          >
-                            <div className="bg-white p-5 rounded h-full flex flex-col animate-pulse space-y-5">
-                              {/* Placeholder for review content */}
-                              <div className="flex-1 space-y-2">
-                                <div className="h-3 w-full bg-gray-200 rounded" />
-                                <div className="h-3 w-full bg-gray-200 rounded" />
-                                <div className="h-3 w-full bg-gray-200 rounded" />
-                                <div className="h-3 w-5/6 bg-gray-200 rounded" />
-                              </div>
 
-                              {/* Placeholder for name and designation */}
-                              <div className="flex justify-between items-center mt-auto">
-                                <div className="space-y-2">
-                                  <div className="h-4 w-32 bg-gray-200 rounded" />{" "}
-                                  {/* Name */}
-                                  <div className="h-3 w-24 bg-gray-200 rounded" />{" "}
-                                  {/* Designation */}
-                                </div>
-                              </div>
-                            </div>
-                          </CarouselItem>
-                        ))
-                      : reviews?.map((review: any, index: number) => (
-                          <CarouselItem key={index} className="md:basis-1/2 ">
-                            <div className="bg-white mx-2 p-5 rounded h-full flex flex-col">
-                              <p className="text-sm text-[#656565] mb-5 flex-1">
-                                {review?.content}
-                              </p>
-                              <div className="flex items-center gap-3 ">
-                                <div className="w-12 h-12 rounded-full bg-golden flex items-center justify-center mx-auto ">
-                                  {review.image ? (
-                                    <Image
-                                      width={40}
-                                      height={40}
-                                      src={review.image}
-                                      alt={review.name}
-                                      className="w-full h-full object-cover relative "
-                                    />
-                                  ) : (
-                                    <User className="text-white" size={30} />
-                                  )}
-                                </div>
-
-                                <div className="flex justify-between items-center gap-2 flex-1">
-                                  <div className="">
-                                    <p className="">{review?.name}</p>
-                                    <p className="text-sm text-[#656565]">
-                                      {review?.designation}
-                                    </p>
-                                  </div>
-                                  <div className="">
-                                    <PiQuotesDuotone className="text-6xl text-golden" />
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </CarouselItem>
-                        ))}
-                  </CarouselContent>
-                </Carousel>
-
-                <div className="flex absolute bottom-2 left-1/2  -translate-x-1/2">
-                  {Array.from({ length: count }).map((_, i) =>
-                    i === current - 1 ? (
-                      <GoDotFill
-                        key={i}
-                        className="text-golden text-xl ml-1 "
-                      />
-                    ) : (
-                      <GoDot key={i} className="text-golden text-xl  ml-2" />
-                    )
-                  )}
-                </div>
-              </div>
               <div className="bg-black flex flex-col sm:flex-row justify-baseline items-center gap-5 p-5 my-16 max-w-screen-xl mx-auto">
                 {/* টেক্সট */}
                 <p
@@ -470,7 +362,7 @@ const ShopDetails = ({ slug }: any) => {
                   </a>
                 </p>
               </div>
-              <div className="relative  max-w-screen-xl mx-auto bg-[#F5F5F5] pt-10">
+              <div className="relative z-30 max-w-screen-xl mx-auto bg-[#F5F5F5] pt-10">
                 {/* contact number */}
                 <div className="absolute w-full flex flex-col items-center rounded-lg">
                   <a
@@ -480,16 +372,16 @@ const ShopDetails = ({ slug }: any) => {
                   >
                     প্রয়োজনে কল করুন: 01877726999
                   </a>
-                  <p className="flex text-xl">
-                    “
+                  <p className="flex lg:flex-row flex-col items-center text-xl">
+
                     <span
                       dangerouslySetInnerHTML={{ __html: productName }}
-                      className=""
+                      className="py-2 sm:mr-3"
                       style={{ fontFamily: "SolaimanLipi" }}
                     />
-                    ”{" "}
+
                     <span
-                      className="#656565"
+                      className="text-center sm:text-start "
                       style={{ fontFamily: "SolaimanLipi" }}
                     >
                       নিতে নিচের ফর্মটি পূরণ করুন এবং অর্ডার নিশ্চিত করুন
@@ -849,17 +741,128 @@ const ShopDetails = ({ slug }: any) => {
                     <button
                       type="submit"
                       disabled={placeOrderLoading}
-                      className={`w-full py-2 rounded cursor-pointer ${
-                        placeOrderLoading
-                          ? "bg-gray-400 cursor-not-allowed disabled"
-                          : "bg-yellow-400 hover:bg-yellow-500"
-                      }`}
+                      className={`w-full py-2 rounded cursor-pointer ${placeOrderLoading
+                        ? "bg-gray-400 cursor-not-allowed disabled"
+                        : "bg-yellow-400 hover:bg-yellow-500"
+                        }`}
                     >
                       {placeOrderLoading ? "Place Order.." : "Place Order"}
                     </button>
                   </div>
                 </form>
               </div>
+
+              <div className="max-w-screen-lg mx-auto relative z-50 py-10 mt-36 sm:mt-24 lg:mt-20">
+                <h1 className="text-2xl sm:text-3xl lg:text-[40px] bellmt-font">
+                  Specialty
+                </h1>
+                <hr className="my-5" />
+                {specialty?.map((item: any, i: number) => {
+                  return (
+                    <p
+                      key={i}
+                      className="text-[#656565] flex items-center gap-2"
+                    >
+                      <CheckCircle size={16} />
+                      {item}
+                    </p>
+                  );
+                })}
+              </div>
+              <div className="max-w-screen-xl mx-auto bg-[#F5F5F5] py-10 ] relative">
+                <div className="text-center mb-16">
+                  <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
+                  <h1
+                    className="text-3xl sm:text-4xl lg:text-5xl text-midnight-navy my-4 font-bold"
+                    style={{ fontFamily: "SolaimanLipi" }}
+                  >
+                    কাস্টমারদের রিভিউ
+                  </h1>
+                  <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>
+                </div>
+                <Carousel opts={{startIndex:2}} setApi={setApi}>
+                  <CarouselContent className="max-w-screen-lg mx-auto">
+                    {isLoading
+                      ? // Show 3 skeleton cards as placeholders
+                      Array.from({ length: 3 }).map((_, index) => (
+                        <CarouselItem
+                          key={index}
+                          className="md:basis-1/2 lg:basis-1/3 h-full"
+                        >
+                          <div className="bg-white p-5 rounded h-full flex flex-col animate-pulse space-y-5">
+                            {/* Placeholder for review content */}
+                            <div className="flex-1 space-y-2">
+                              <div className="h-3 w-full bg-gray-200 rounded" />
+                              <div className="h-3 w-full bg-gray-200 rounded" />
+                              <div className="h-3 w-full bg-gray-200 rounded" />
+                              <div className="h-3 w-5/6 bg-gray-200 rounded" />
+                            </div>
+
+                            {/* Placeholder for name and designation */}
+                            <div className="flex justify-between items-center mt-auto">
+                              <div className="space-y-2">
+                                <div className="h-4 w-32 bg-gray-200 rounded" />{" "}
+                                {/* Name */}
+                                <div className="h-3 w-24 bg-gray-200 rounded" />{" "}
+                                {/* Designation */}
+                              </div>
+                            </div>
+                          </div>
+                        </CarouselItem>
+                      ))
+                      : reviews?.map((review: any, index: number) => (
+                        <CarouselItem  key={index} className="md:basis-1/2 ">
+                          <div className="bg-white mx-2 p-5 rounded h-full flex flex-col">
+                            <p className="text-sm text-[#656565] mb-5 flex-1">
+                              {review?.content}
+                            </p>
+                            <div className="flex items-center gap-3 ">
+                              <div className="w-12 h-12 rounded-full bg-golden flex items-center justify-center mx-auto ">
+                                {review.image ? (
+                                  <Image
+                                    width={40}
+                                    height={40}
+                                    src={review.image}
+                                    alt={review.name}
+                                    className="w-full h-full object-cover relative "
+                                  />
+                                ) : (
+                                  <User className="text-white" size={30} />
+                                )}
+                              </div>
+
+                              <div className="flex justify-between items-center gap-2 flex-1">
+                                <div className="">
+                                  <p className="">{review?.name}</p>
+                                  <p className="text-sm text-[#656565]">
+                                    {review?.designation}
+                                  </p>
+                                </div>
+                                <div className="">
+                                  <PiQuotesDuotone className="text-6xl text-golden" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </CarouselItem>
+                      ))}
+                  </CarouselContent>
+                </Carousel>
+
+                <div className="flex absolute bottom-2 left-1/2 -translate-x-1/2">
+                  {Array.from({ length: count }).map((_, i) =>
+                    i === current - 1 ? (
+                      <GoDotFill
+                        key={i}
+                        className="text-golden text-xl ml-1 "
+                      />
+                    ) : (
+                      <GoDot key={i} className="text-golden text-xl  ml-2" />
+                    )
+                  )}
+                </div>
+              </div>
+
               <div className="pt-36 sm:py-20 max-w-screen-xl mx-auto">
                 <div className="text-center my-10 lg:my-16">
                   <div className="w-96 h-[1px] bg-gray-400 mx-auto"></div>

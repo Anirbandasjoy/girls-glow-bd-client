@@ -43,7 +43,7 @@ export default function Banner() {
   }, [api, count, current])
 
   return (
-    <div className="sm:px-[5%] mb-20 sm:mb-10 relative z-50">
+    <div className="sm:px-[5%] mb-20 sm:mb-10 relative z-20">
       <Carousel
         plugins={[plugin.current]}
         opts={{ loop: true }}
