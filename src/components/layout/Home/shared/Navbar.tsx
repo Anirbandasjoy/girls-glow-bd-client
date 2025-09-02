@@ -239,7 +239,7 @@ const Navbar = ({ className }: { className: string }) => {
         {/* Mobile Menu Overlay */}
 
         <div
-          className={`fixed top-0 left-0 w-full flex flex-col gap-4   bg-white/30 backdrop-blur-sm pt-32 pb-5 z-30 px-[5%] transform duration-700 lg:hidden shadow ${isOpen ? "translate-y-0" : "-translate-y-full"
+          className={`fixed top-0 left-0 w-full flex flex-col gap-4 bg-white/30 backdrop-blur-sm pt-32 pb-5 z-30 px-[5%] transform duration-700 lg:hidden shadow ${isOpen ? "translate-y-0" : "-translate-y-full"
             }`}
         >
           <div className="space-y-6 text-lg flex flex-col font-medium">
