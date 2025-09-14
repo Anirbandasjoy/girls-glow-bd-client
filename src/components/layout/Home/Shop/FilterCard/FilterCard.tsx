@@ -42,6 +42,8 @@ const FilterCard: React.FC<FilterCardProps> = ({
   });
   const categories: IData[] = data?.payload || [];
 
+  const findWithOutLungi = categories?.filter((c)=>c.categoryName!=="lungi")
+
   const handleMinPrice = (data: number) => {
     setMinPrice(data);
     refetch();
@@ -97,7 +99,7 @@ const FilterCard: React.FC<FilterCardProps> = ({
               </Label>
             </div>
 
-            {categories?.map((category) => (
+            {findWithOutLungi?.map((category) => (
               <div
                 className="flex items-center space-x-2 cursor-pointer"
                 key={category?._id}

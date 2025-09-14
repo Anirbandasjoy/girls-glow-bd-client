@@ -9,18 +9,6 @@ import { useHandleFindProductQuery } from "@/redux/features/product/productApi";
 
 import { useSearchParams } from "next/navigation";
 
-// 📝 data Interface - Defines structure for each data object
-interface IData {
-  _id: string; // Unique data ID from MongoDB
-  slug: string; // SEO-friendly URL slug for the data (used in URL)
-  productName: string; // Title of the data
-  productImage: string; // URL of the image associated with the data (e.g., thumbnail)
-  price: number;
-  quantity: number;
-  sold: number;
-  createdAt: string; // ISO date string when the data was created
-  updatedAt: string; // ISO date string when the data was last updated
-}
 
 export default function ShopPage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +28,9 @@ export default function ShopPage() {
     category: categoryPrice,
   });
 
-  const products: IData[] = data?.payload || [];
+  const products: any[] = data?.payload || [];
+
+  const findWithOutLungi = products?.filter((p)=>p?.category?.categoryName!=="lungi")
 
   useEffect(() => {
     const category = params.get("category");
@@ -120,7 +110,7 @@ export default function ShopPage() {
                   </p>
                 </div>
               ) : (
-                products.map((product) => (
+                findWithOutLungi?.map((product) => (
                   <ProductCard product={product} key={product._id} />
                 ))
               )}

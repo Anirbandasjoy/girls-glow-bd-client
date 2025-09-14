@@ -4,18 +4,7 @@ import ProductCard from "../../shared/ProductCard";
 import Link from "next/link";
 
 // 📝 data Interface - Defines structure for each data object
-interface IData {
-  _id: string; // Unique data ID from MongoDB
-  slug: string; // SEO-friendly URL slug for the data (used in URL)
-  productName: string; // Title of the data
-  productImage: string; // URL of the image associated with the data (e.g., thumbnail)
-  price: number;
-  prvPrice: number;
-  quantity: number;
-  sold: number;
-  createdAt: string; // ISO date string when the data was created
-  updatedAt: string; // ISO date string when the data was last updated
-}
+
 
 // Enhanced Loading Skeleton Component
 const ProductSkeleton = () => (
@@ -47,8 +36,8 @@ export default function FeaturedProduct() {
     search: "", // The search text to filter data
   });
 
-  const products: IData[] = data?.payload || [];
-
+  const products: any[] = data?.payload || [];
+  const findWithOutLungi = products?.filter((p)=>p?.category?.categoryName!=="lungi")
   // Extract unique categories (you might want to add category field to your interface)
 
   // Filter products based on active category (implement your filtering logic)
@@ -101,7 +90,7 @@ export default function FeaturedProduct() {
             ? Array.from({ length: 8 }).map((_, index) => (
               <ProductSkeleton key={index} />
             ))
-            : filteredProducts.map((product) => (
+            : findWithOutLungi?.map((product) => (
               <div key={product._id}>
                 <ProductCard product={product} />
               </div>
